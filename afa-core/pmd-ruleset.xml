@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<ruleset name="Custom rules"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+    <description>
+        Custom rules for PMD 7.2.0
+    </description>
+
+    <!-- Best Practices -->
+    <rule ref="rulesets/java/bestpractices.xml">
+        <exclude name="GuardLogStatement"/>
+    </rule>
+
+    <!-- Error Prone -->
+    <rule ref="rulesets/java/errorprone.xml">
+        <exclude name="MissingSerialVersionUID"/>
+        <exclude name="UseLocaleWithCaseConversions"/>
+    </rule>
+
+    <!-- Code Style -->
+    <rule ref="rulesets/java/codestyle.xml">
+        <exclude name="LongVariable"/>
+        <exclude name="OnlyOneReturn"/>
+    </rule>
+
+    <rule ref="rulesets/java/codestyle.xml/ClassNamingConventions">
+        <properties>
+            <property name="classPattern" value="[A-Z][a-zA-Z0-9]*"/>
+            <property name="abstractClassPattern" value="[A-Z][a-zA-Z0-9]*"/>
+            <property name="interfacePattern" value="[A-Z][a-zA-Z0-9]*"/>
+            <property name="enumPattern" value="[A-Z][a-zA-Z0-9]*"/>
+            <property name="annotationPattern" value="[A-Z][a-zA-Z0-9]*"/>
+            <property name="utilityClassPattern" value="[A-Z][a-zA-Z0-9]+(Util|Helper|Constants)"/>
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/java/codestyle.xml/ShortMethodName">
+        <properties>
+            <property name="minimum" value="2"/>
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/java/codestyle.xml/ShortVariable">
+        <properties>
+            <property name="minimum" value="2"/>
+        </properties>
+    </rule>
+
+    <!-- Multithreading -->
+    <rule ref="rulesets/java/multithreading.xml">
+        <exclude name="UseConcurrentHashMap"/>
+    </rule>
+
+    <!-- Performance -->
+    <rule ref="rulesets/java/performance.xml">
+        <exclude name="AvoidInstantiatingObjectsInLoops"/>
+    </rule>
+
+</ruleset>
