@@ -1,0 +1,4 @@
+rootProject.name = 'afaLibModules'
+
+include 'afa-core'
+

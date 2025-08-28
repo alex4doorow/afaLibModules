@@ -1,0 +1,57 @@
+plugins {
+    id 'org.springframework.boot' version '3.5.4' apply false
+    id 'io.spring.dependency-management' version '1.1.7' apply false
+}
+
+allprojects {
+    group = 'com.afa'
+    version = '8.0.1-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+        withJavadocJar()
+        withSourcesJar()
+    }
+
+    afterEvaluate {
+        // Проверяем, что у проекта нет своей публикации
+        if (!project.extensions.findByName('publishing')) {
+            return
+        }
+
+        if (project.components.findByName('java') != null &&
+                project.publishing.publications.findByName('mavenJava') == null) {
+
+            publishing {
+                publications {
+                    create('mavenJava', MavenPublication) {
+                        from components.java
+                    }
+                }
+                repositories {
+                    mavenLocal()
+                }
+            }
+        }
+    }
+}
+
+wrapper {
+	gradleVersion = "8.7"
+	distributionUrl = distributionUrl.replace("bin", "all")
+}

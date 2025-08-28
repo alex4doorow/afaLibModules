@@ -45,4 +45,24 @@ public class CustomerDto {
 
     @Schema(description = "создано", example = "2024-06-16T07:42:45Z")
     private Instant dateAdded;
+
+    public String getShortName() {
+        if ((company != null) && (type == CustomerTypes.COMPANY || type == CustomerTypes.FOREIGNER_COMPANY)) {
+            return company.getShortName();
+        } else if (person != null) {
+            return person.getShortName();
+        } else {
+            return "";
+        }
+    }
+
+    public String getInn() {
+        if ((company != null) && (type == CustomerTypes.COMPANY || type == CustomerTypes.FOREIGNER_COMPANY)) {
+            return company.getInn();
+        } else if (person != null) {
+            return person.getInn();
+        } else {
+            return "";
+        }
+    }
 }

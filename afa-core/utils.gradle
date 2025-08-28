@@ -1,15 +1,5 @@
 def getMinorVersion() {
-    println("Project version details: ${versionDetails().version}")
-    String branchName = branch()
-
-    if (isRelease()) {
-        return versionDetails().commitDistance
-    } else {
-        def asanaTicketId = validateBranchName(branchName)
-        def timestamp = System.currentTimeMillis()
-
-        return timestamp + '-' + asanaTicketId
-    }
+    return System.currentTimeMillis()
 }
 
 def validateBranchName(String branchName) {
@@ -22,7 +12,7 @@ def getValueFromEnvOrProperty(String key) {
 }
 
 def branch() {
-    return project.findProperty("branchName") ?: versionDetails().branchName
+    return project.findProperty("branchName") ?: "main"
 }
 
 def isRelease() {
