@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 @Getter
 public enum DeliveryPriceTypes {
 	
-	UNKNOWN(DeliveryTypes.UNKNOWN, "", BigDecimal.ZERO),
+	UNKNOWN(DeliveryTypes.UNKNOWN, "unknown", BigDecimal.ZERO),
 	COURIER_MOSCOW_TYPICAL(DeliveryTypes.COURIER_MOSCOW_TYPICAL, "Москва, обычный", BigDecimal.valueOf(300)),
 	COURIER_MOSCOW_FAST(DeliveryTypes.COURIER_MOSCOW_FAST, "Москва, срочный", BigDecimal.valueOf(500)),
 	
@@ -25,5 +25,9 @@ public enum DeliveryPriceTypes {
 		this.annotation = annotation;
 		this.price = price;		
 	}
+
+    public String getCode() {
+        return name();
+    }
 
 }

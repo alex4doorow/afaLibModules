@@ -11,7 +11,6 @@ public class DevicerException extends RuntimeException {
     private final String errorCode;
     private final String errorMessage;
 
-
     public DevicerException(final DevicerErrors error, final Object... args) {
         super(error.name());
         this.errorCode = error.name();

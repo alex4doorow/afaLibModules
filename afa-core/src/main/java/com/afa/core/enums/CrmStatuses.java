@@ -13,4 +13,8 @@ public enum CrmStatuses {
 
     private final String name;
 
+    public String getCode() {
+        return name();
+    }
+
 }

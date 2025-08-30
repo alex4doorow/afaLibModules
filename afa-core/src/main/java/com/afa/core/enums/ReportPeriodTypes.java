@@ -32,6 +32,10 @@ public enum ReportPeriodTypes {
     private final String annotation;
     private final String text;
 
+    public String getCode() {
+        return name();
+    }
+
     public static ReportPeriodTypes[] getListOrderValues() {
         final Set<ReportPeriodTypes> result = new HashSet<>();
 

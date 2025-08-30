@@ -13,4 +13,8 @@ public enum OrderPaymentTypes {
 	CARD_PAY("банковской картой");
 
 	private final String annotation;
+
+    public String getCode() {
+        return name();
+    }
 }

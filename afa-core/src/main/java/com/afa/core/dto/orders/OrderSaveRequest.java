@@ -68,7 +68,6 @@ public class OrderSaveRequest {
     @Size(min = 0, max = 20)
     private Set<OrderItemSaveRequest> items;
 
-    @NotBlank
     @Schema(description = "annotation")
     private String annotation;
 }

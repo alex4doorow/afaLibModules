@@ -48,4 +48,8 @@ public enum DevicerErrors {
     DevicerErrors(final String errorMessage) {
         this.errorMessage = errorMessage;
     }
+
+    public String getCode() {
+        return name();
+    }
 }

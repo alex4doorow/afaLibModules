@@ -11,4 +11,8 @@ public enum ContactTypes {
 	ADDITIONAL("дополнительный");
 
     private final String annotation;
+
+    public String getCode() {
+        return name();
+    }
 }

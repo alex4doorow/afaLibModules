@@ -18,4 +18,8 @@ public enum OrderTypes {
     REPAIR("ремонт");
 
 	private final String annotation;
+
+    public String getCode() {
+        return name();
+    }
 }

@@ -20,4 +20,8 @@ public enum OrderAdvertTypes {
 		
 	private final String annotation;
 
+    public String getCode() {
+        return name();
+    }
+
 }

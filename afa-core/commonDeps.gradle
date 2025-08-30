@@ -22,12 +22,12 @@ dependencies {
     implementation "com.nimbusds:nimbus-jose-jwt:9.37.3"
     implementation "org.apache.commons:commons-lang3:3.17.0"
     implementation 'commons-codec:commons-codec:1.17.1'
-    implementation "org.postgresql:postgresql:42.7.3"
+//    implementation "org.postgresql:postgresql:42.7.3"
     implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0"
 
-    implementation ("org.liquibase:liquibase-core:4.25.0") {
-        exclude group: "ch.qos.logback", module: "logback-classic"
-    }
+//    implementation ("org.liquibase:liquibase-core:4.25.0") {
+//        exclude group: "ch.qos.logback", module: "logback-classic"
+//    }
 
     // DB
 //    runtimeOnly "org.postgresql:postgresql:42.7.3.jre7"

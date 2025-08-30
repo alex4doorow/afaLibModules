@@ -44,4 +44,8 @@ public enum OrderStatusTypes {
 	private final String annotation;
 	private final String view;
 
+    public String getCode() {
+        return name();
+    }
+
 }

@@ -11,4 +11,8 @@ public enum WeightClasses {
     GRAM("Грамм");
 
     private final String annotation;
+
+    public String getCode() {
+        return name();
+    }
 }

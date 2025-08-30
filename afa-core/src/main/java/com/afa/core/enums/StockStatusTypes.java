@@ -13,4 +13,8 @@ public enum StockStatusTypes {
     WAITING_2_3_DAYS("Ожидание 2-3 дня");
 
     private final String annotation;
+
+    public String getCode() {
+        return name();
+    }
 }

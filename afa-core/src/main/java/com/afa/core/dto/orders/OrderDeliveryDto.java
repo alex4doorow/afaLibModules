@@ -1,10 +1,10 @@
 package com.afa.core.dto.orders;
 
 import com.afa.core.dto.dictionaries.AddressDto;
+import com.afa.core.dto.dictionaries.DeliveryTypeDto;
 import com.afa.core.dto.persons.PersonFullDto;
 import com.afa.core.enums.DeliveryPaymentTypes;
 import com.afa.core.enums.DeliveryPriceTypes;
-import com.afa.core.enums.DeliveryTypes;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -29,7 +29,7 @@ public class OrderDeliveryDto {
     private Long id;
 
     @Schema(description = "delivery type")
-    private DeliveryTypes deliveryType;
+    private DeliveryTypeDto deliveryType;
 
     @Schema(description = "delivery payment type")
     private DeliveryPaymentTypes deliveryPaymentType;

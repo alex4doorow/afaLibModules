@@ -5,13 +5,10 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum AddressTypes {
-		
-	MAIN(1, "основной"),
-	ADDITIONAL(2, "дополнительный"),
-	UNKNOWN(3, "неизвестный");
+public enum StockTypes {
 
-	private final int id;
+    MAIN("основной");
+
     private final String annotation;
 
     public String getCode() {

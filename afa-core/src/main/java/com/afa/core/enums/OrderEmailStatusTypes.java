@@ -11,4 +11,8 @@ public enum OrderEmailStatusTypes {
 	TERM_EXPAIRED("запрос на актуальность");
 		
 	private final String annotation;
+
+    public String getCode() {
+        return name();
+    }
 }

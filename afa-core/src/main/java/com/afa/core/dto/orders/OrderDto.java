@@ -1,9 +1,11 @@
 package com.afa.core.dto.orders;
 
 import com.afa.core.dto.customers.CustomerDto;
+import com.afa.core.dto.dictionaries.OrderStatusTypeDto;
 import com.afa.core.dto.persons.PersonShortDto;
 import com.afa.core.dto.products.ProductCategoryDto;
 import com.afa.core.enums.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
@@ -12,8 +14,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.Set;
 
 @Data
@@ -58,7 +62,11 @@ public class OrderDto {
     @Schema(description = "delivery")
     private OrderDeliveryDto delivery;
 
-    private OrderStatusTypes status;
+    @Schema(description = "amounts")
+    private Map<OrderAmountTypes, BigDecimal> amounts;
+
+    @Schema(description = "status")
+    private OrderStatusTypeDto status;
 
     @Schema(description = "items")
     private Set<OrderItemDto> items;
@@ -75,4 +83,16 @@ public class OrderDto {
 
     @Schema(description = "создано", example = "2024-06-16T07:42:45Z")
     private Instant dateAdded;
+
+    @Schema(description = "presentationStatus")
+    private OrderPresentationStatusDto presentationStatus;
+
+    @JsonIgnore
+    public boolean isPrepayment() {
+        if (paymentType == OrderPaymentTypes.PREPAYMENT || paymentType == OrderPaymentTypes.CARD_PAY) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

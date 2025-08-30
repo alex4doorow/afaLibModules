@@ -15,4 +15,20 @@ public enum CrmTypes {
     OZON("ОЗОН Маркет");
 
     private final String name;
+
+    public String getCode() {
+        return name();
+    }
+
+    /**
+     * Лид, с поведением как у ручного или ручной
+     * @return
+     */
+    public boolean isSimple() {
+        if (this == CrmTypes.NONE || this == CrmTypes.EMAIL || this == CrmTypes.CDEK) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

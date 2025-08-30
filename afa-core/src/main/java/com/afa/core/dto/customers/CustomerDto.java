@@ -65,4 +65,14 @@ public class CustomerDto {
             return "";
         }
     }
+
+    public String getPhoneNumber() {
+        if (company != null) {
+            return company.getPhoneNumber();
+        } else if (person != null) {
+            return person.getPhoneNumber();
+        } else {
+            return "";
+        }
+    }
 }

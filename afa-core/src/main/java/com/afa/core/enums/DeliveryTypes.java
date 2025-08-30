@@ -1,8 +1,13 @@
 package com.afa.core.enums;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @Getter
+@AllArgsConstructor
 @SuppressWarnings({"PMD.UnnecessaryFullyQualifiedName", "PMD.AvoidDuplicateLiterals"})
 public enum DeliveryTypes {
 
@@ -21,28 +26,59 @@ public enum DeliveryTypes {
     PICKUP(403, "самовывоз, сегодня", "самовывоз"),
     YANDEX_MARKET_FBS(501, "YANDEX MARKET", "до склада Яндекс-Маркет"),
     OZON_FBS(701, "OZON", "до склада OZON"),
-    YANDEX_GO(601, "YANDEX GO", "Яндекс-Логистика"),
-    OZON_ROCKET_PICKPOINT(801, "OZON Rocket", "OZON Rocket ПВЗ", "PickPoint"),
-    OZON_ROCKET_POSTAMAT(802, "OZON Rocket", "OZON Rocket постамат", "Postamat"),
-    OZON_ROCKET_COURIER(803, "OZON Rocket", "OZON Rocket курьер", "Courier");
+    YANDEX_GO(601, "YANDEX GO", "Яндекс-Логистика");
 
     private final int id;
     private final String category;
     private final String annotation;
-    private final String code;
 
-    DeliveryTypes(final int id, final String category, final String annotation) {
-        this.id = id;
-        this.category = category;
-        this.annotation = annotation;
-        this.code = null;
+    public String getCode() {
+        return name();
     }
 
-    DeliveryTypes(final int id, final String category, final String annotation, final String code) {
-        this.id = id;
-        this.category = category;
-        this.annotation = annotation;
-        this.code = code;
+    @JsonIgnore
+    public boolean isCdek() {
+        if (this == DeliveryTypes.PICKUP
+                || this == DeliveryTypes.CDEK_PVZ_TYPICAL
+                || this == DeliveryTypes.CDEK_PVZ_ECONOMY
+                || this == DeliveryTypes.CDEK_COURIER
+                || this == DeliveryTypes.CDEK_COURIER_ECONOMY) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    @JsonIgnore
+    public boolean isCdekPvz() {
+        if (this == DeliveryTypes.CDEK_PVZ_TYPICAL
+                || this == DeliveryTypes.CDEK_PVZ_ECONOMY
+                || this == DeliveryTypes.PICKUP) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @JsonIgnore
+    public boolean isPost() {
+        if (this == DeliveryTypes.POST_TYPICAL
+                || this == DeliveryTypes.POST_I_CLASS
+                || this == DeliveryTypes.POST_EMS) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @JsonIgnore
+    public boolean isCourier() {
+        if (this == DeliveryTypes.COURIER_MOSCOW_TYPICAL
+                || this == DeliveryTypes.COURIER_MOSCOW_FAST
+                || this == DeliveryTypes.COURIER_MO_TYPICAL) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

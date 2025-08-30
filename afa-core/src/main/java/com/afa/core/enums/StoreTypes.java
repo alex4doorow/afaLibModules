@@ -16,4 +16,8 @@ public enum StoreTypes {
     private final String email;
     private final String annotation;
     private final String prefix;
+
+    public String getCode() {
+        return name();
+    }
 }

@@ -11,4 +11,8 @@ public enum LengthClasses {
     CENTIMETER("Сантиметр");
 
     private final String annotation;
+
+    public String getCode() {
+        return name();
+    }
 }

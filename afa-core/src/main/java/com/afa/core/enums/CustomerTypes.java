@@ -20,4 +20,7 @@ public enum CustomerTypes {
     private final String longName;
     private final String shortName;
 
+    public String getCode() {
+        return name();
+    }
 }

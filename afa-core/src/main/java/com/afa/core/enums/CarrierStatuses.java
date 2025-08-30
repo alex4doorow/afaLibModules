@@ -60,4 +60,7 @@ public enum CarrierStatuses {
 		this.orderStatusType = orderStatusType;
 	}
 
+    public String getCode() {
+        return name();
+    }
 }

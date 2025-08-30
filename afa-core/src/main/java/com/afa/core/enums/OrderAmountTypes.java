@@ -41,4 +41,8 @@ public enum OrderAmountTypes {
 	private final int id;
     private final String annotation;
 
+    public String getCode() {
+        return name();
+    }
+
 }

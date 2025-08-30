@@ -17,4 +17,8 @@ public enum ProductTypes {
 	ADDITIONAL("дополнительный");
 
     private final String name;
+
+    public String getCode() {
+        return name();
+    }
 }
