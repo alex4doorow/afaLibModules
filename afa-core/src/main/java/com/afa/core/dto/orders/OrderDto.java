@@ -5,6 +5,7 @@ import com.afa.core.dto.dictionaries.OrderStatusTypeDto;
 import com.afa.core.dto.persons.PersonShortDto;
 import com.afa.core.dto.products.ProductCategoryDto;
 import com.afa.core.enums.*;
+import com.afa.core.utils.DateHelper;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -13,6 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -84,8 +86,8 @@ public class OrderDto {
     @Schema(description = "создано", example = "2024-06-16T07:42:45Z")
     private Instant dateAdded;
 
-    @Schema(description = "presentationStatus")
-    private OrderPresentationStatusDto presentationStatus;
+    @Schema(description = "presentation status")
+    private OrderPresentationStatusDto presentation;
 
     @JsonIgnore
     public boolean isPrepayment() {
@@ -94,5 +96,77 @@ public class OrderDto {
         } else {
             return false;
         }
+    }
+
+    public String getViewNum() {
+        String result = String.valueOf(this.orderNum);
+        /*
+        if (getExternalCrms() != null && getExternalCrms().size() > 0) {
+            if (this.getAdvertType() == OrderAdvertTypes.OZON) {
+                String ozonMarketNo = "";
+                for (OrderExternalCrm externalCrm : getExternalCrms()) {
+                    if (externalCrm.getCrm() == CrmTypes.OZON) {
+                        ozonMarketNo = String.valueOf(externalCrm.getParentCode());
+                    }
+                }
+                result += " (" + ozonMarketNo + ")";
+                return result;
+
+            } else if (this.getAdvertType() == OrderAdvertTypes.YANDEX_MARKET) {
+                String openCartNo = "";
+                String yandexMarketNo = "";
+                for (OrderExternalCrm externalCrm : getExternalCrms()) {
+                    if (externalCrm.getCrm() == CrmTypes.OPENCART) {
+                        openCartNo = String.valueOf(externalCrm.getParentId());
+                    }
+                    if (externalCrm.getCrm() == CrmTypes.YANDEX_MARKET) {
+                        yandexMarketNo = String.valueOf(externalCrm.getParentId());
+                    }
+                }
+                result += " (" + yandexMarketNo + " / " + openCartNo + ")";
+                return result;
+            }
+            for (OrderExternalCrm externalCrm : getExternalCrms()) {
+                if (externalCrm.getCrm() == CrmTypes.OPENCART) {
+                    result += " (" + externalCrm.getParentId() + ")";
+                    break;
+                }
+            }
+            //Просмотр данных по заказу #10161 (197) от 01.03.2021 г.
+        }
+
+        */
+       return result;
+    }
+
+    public String getViewMarketNo() {
+        /*
+        if (getExternalCrms() != null && getExternalCrms().size() > 0) {
+            if (this.getAdvertType() == OrderAdvertTypes.OZON) {
+                for (OrderExternalCrm externalCrm : getExternalCrms()) {
+                    if (externalCrm.getCrm() == CrmTypes.OZON) {
+                        return String.valueOf(externalCrm.getParentCode());
+                    }
+                }
+            } else if (this.getAdvertType() == OrderAdvertTypes.YANDEX_MARKET) {
+                String openCartNo = "";
+                String yandexMarketNo = "";
+                for (OrderExternalCrm externalCrm : getExternalCrms()) {
+                    if (externalCrm.getCrm() == CrmTypes.OPENCART) {
+                        openCartNo = String.valueOf(externalCrm.getParentId());
+                    } else if (externalCrm.getCrm() == CrmTypes.YANDEX_MARKET) {
+                        yandexMarketNo = String.valueOf(externalCrm.getParentId());
+                    }
+                }
+                return yandexMarketNo + " / " + openCartNo;
+            }
+        }
+        */
+        return "";
+    }
+
+    public String getBarcodeNumber() {
+        return "";
+        //return DateHelper.formatDate(this.getOrderDate(), "yyMMdd") + StringUtils.leftPad(String.valueOf(this.getNo()), 2, '0');
     }
 }

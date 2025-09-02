@@ -39,145 +39,145 @@ public class OrderPresentationStatusDto {
         this.orderDate = VIEW_STATUS_LIGHT;
     }
 
-    public static OrderPresentationStatusDto createOrderPresentationStatusDto(final OrderDto order) {
+    public static OrderPresentationStatusDto createOrderPresentationStatusDto(final OrderDto orderDto) {
 
         OrderPresentationStatusDto orderPresentationStatusDto = new OrderPresentationStatusDto();
-        if (order.getType() == OrderTypes.KP || order.getType() == OrderTypes.CONSULTATION) {
-            if (order.getStatus().getCode().equals(OrderStatusTypes.CANCELED.name())) {
+        if (orderDto.getType() == OrderTypes.KP || orderDto.getType() == OrderTypes.CONSULTATION) {
+            if (orderDto.getStatus().getCode().equals(OrderStatusTypes.CANCELED.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_DANGER);
                 return orderPresentationStatusDto;
             } else {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_INFO);
                 return orderPresentationStatusDto; // голубой
             }
-        } else if (order.getType() == OrderTypes.ORDER) {
-            if (order.getStatus().getCode().equals(OrderStatusTypes.BID.name())) {
+        } else if (orderDto.getType() == OrderTypes.ORDER) {
+            if (orderDto.getStatus().getCode().equals(OrderStatusTypes.BID.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_LIGHT);
                 return orderPresentationStatusDto;
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.APPROVED.name())) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.APPROVED.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_LIGHT);
-                if (order.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.YANDEX_MARKET_FBS.name())) {
+                if (orderDto.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.YANDEX_MARKET_FBS.name())) {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_WARNING);
-                } else if (order.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.OZON_FBS.name())) {
+                } else if (orderDto.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.OZON_FBS.name())) {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_WARNING);
-                } else if (order.getDelivery().getDeliveryType().isCdek()) {
+                } else if (orderDto.getDelivery().getDeliveryType().isCdek()) {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_WARNING);
-                } else if (order.getDelivery().getDeliveryType().isPost()) {
+                } else if (orderDto.getDelivery().getDeliveryType().isPost()) {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_WARNING);
-                } else if (order.getDelivery().getDeliveryType().isCourier()) {
+                } else if (orderDto.getDelivery().getDeliveryType().isCourier()) {
                     orderPresentationStatusDto.setUnion(VIEW_STATUS_WARNING);
                     return orderPresentationStatusDto;
-                } else if (order.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.YANDEX_GO.name())) {
+                } else if (orderDto.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.YANDEX_GO.name())) {
                     orderPresentationStatusDto.setUnion(VIEW_STATUS_WARNING);
                     return orderPresentationStatusDto;
                 }
                 return orderPresentationStatusDto;
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.DOC_NOT_EXIST.name())) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.DOC_NOT_EXIST.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_LIGHT);
                 orderPresentationStatusDto.setOrderId(VIEW_STATUS_DARK);
                 orderPresentationStatusDto.setOrderNo(VIEW_STATUS_DARK);
                 orderPresentationStatusDto.setOrderDate(VIEW_STATUS_DARK);
                 return orderPresentationStatusDto;
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.FINISHED.name())) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.FINISHED.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_SUCCESS);
                 return orderPresentationStatusDto; // зеленый
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.REDELIVERY.name())) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.REDELIVERY.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_DANGER);
                 return orderPresentationStatusDto; // красный
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.CANCELED.name())) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.CANCELED.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_DANGER);
                 return orderPresentationStatusDto; // красный
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.LOST.name())) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.LOST.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_DANGER);
                 return orderPresentationStatusDto; // красный
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.REDELIVERY_FINISHED.name())) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.REDELIVERY_FINISHED.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_DANGER);
                 return orderPresentationStatusDto; // красный
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.DELIVERING.name())) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.DELIVERING.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_LIGHT);
-                if (order.getDelivery().getDeliveryType().isCdek()) {
+                if (orderDto.getDelivery().getDeliveryType().isCdek()) {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_SUCCESS);
                     return orderPresentationStatusDto;
-                } else if (order.getDelivery().getDeliveryType().isPost()) {
+                } else if (orderDto.getDelivery().getDeliveryType().isPost()) {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_SUCCESS);
                     return orderPresentationStatusDto;
-                } else if (order.getDelivery().getDeliveryType().isCourier()) {
+                } else if (orderDto.getDelivery().getDeliveryType().isCourier()) {
                     orderPresentationStatusDto.setUnion(VIEW_STATUS_WARNING);
                     return orderPresentationStatusDto;
-                } else if (order.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.YANDEX_GO.name())) {
+                } else if (orderDto.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.YANDEX_GO.name())) {
                     orderPresentationStatusDto.setUnion(VIEW_STATUS_WARNING);
                     return orderPresentationStatusDto;
-                } else if (order.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.YANDEX_MARKET_FBS.name())) {
+                } else if (orderDto.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.YANDEX_MARKET_FBS.name())) {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_SUCCESS);
                     return orderPresentationStatusDto;
-                } else if (order.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.OZON_FBS.name())) {
+                } else if (orderDto.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.OZON_FBS.name())) {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_SUCCESS);
                     return orderPresentationStatusDto;
                 }
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.READY_GIVE_AWAY.name()) || order.getStatus().getCode().equals(OrderStatusTypes.READY_GIVE_AWAY_TROUBLE.name())) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.READY_GIVE_AWAY.name()) || orderDto.getStatus().getCode().equals(OrderStatusTypes.READY_GIVE_AWAY_TROUBLE.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_LIGHT);
-                if (order.getDelivery().getDeliveryType().isCdek()) {
+                if (orderDto.getDelivery().getDeliveryType().isCdek()) {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderNo(VIEW_STATUS_DANGER);
                     orderPresentationStatusDto.setOrderDate(VIEW_STATUS_DANGER);
                     return orderPresentationStatusDto;
-                } else if (order.getDelivery().getDeliveryType().isPost()) {
+                } else if (orderDto.getDelivery().getDeliveryType().isPost()) {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderNo(VIEW_STATUS_DANGER);
                     orderPresentationStatusDto.setOrderDate(VIEW_STATUS_DANGER);
                     return orderPresentationStatusDto;
-                } else if (order.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.YANDEX_MARKET_FBS.name())) {
+                } else if (orderDto.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.YANDEX_MARKET_FBS.name())) {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderNo(VIEW_STATUS_DANGER);
                     orderPresentationStatusDto.setOrderDate(VIEW_STATUS_DANGER);
                     return orderPresentationStatusDto;
-                } else if (order.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.OZON_FBS.name())) {
+                } else if (orderDto.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.OZON_FBS.name())) {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderNo(VIEW_STATUS_DANGER);
                     orderPresentationStatusDto.setOrderDate(VIEW_STATUS_DANGER);
                     return orderPresentationStatusDto;
                 }
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.DELIVERED.name())) {
-                if (order.getDelivery().getDeliveryType().isPost() || order.getDelivery().getDeliveryType().isCdek()) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.DELIVERED.name())) {
+                if (orderDto.getDelivery().getDeliveryType().isPost() || orderDto.getDelivery().getDeliveryType().isCdek()) {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderNo(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderDate(VIEW_STATUS_SUCCESS);
                     return orderPresentationStatusDto;
-                } else if (order.getDelivery().getDeliveryType().isCourier()) {
+                } else if (orderDto.getDelivery().getDeliveryType().isCourier()) {
                     orderPresentationStatusDto.setUnion(VIEW_STATUS_SUCCESS);
                     return orderPresentationStatusDto;
-                } else if (order.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.YANDEX_MARKET_FBS.name())) {
+                } else if (orderDto.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.YANDEX_MARKET_FBS.name())) {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderNo(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderDate(VIEW_STATUS_SUCCESS);
                     return orderPresentationStatusDto;
-                } else if (order.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.OZON_FBS.name())) {
+                } else if (orderDto.getDelivery().getDeliveryType().getCode().equals(DeliveryTypes.OZON_FBS.name())) {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderNo(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderDate(VIEW_STATUS_SUCCESS);
                     return orderPresentationStatusDto;
                 }
             }
-        } else if (order.getType() == OrderTypes.BILL) {
-            if (order.getStatus().getCode().equals(OrderStatusTypes.BID.name())) {
+        } else if (orderDto.getType() == OrderTypes.BILL) {
+            if (orderDto.getStatus().getCode().equals(OrderStatusTypes.BID.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_INFO);
                 return orderPresentationStatusDto;
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.APPROVED.name())) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.APPROVED.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_LIGHT);
-                if (order.isPrepayment()) {
+                if (orderDto.isPrepayment()) {
                     orderPresentationStatusDto.setOrderNo(VIEW_STATUS_DANGER);
                 } else {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_WARNING);
                     orderPresentationStatusDto.setOrderNo(VIEW_STATUS_DANGER);
                 }
                 return orderPresentationStatusDto;
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.PAY_WAITING.name())) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.PAY_WAITING.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_LIGHT);
                 orderPresentationStatusDto.setOrderNo(VIEW_STATUS_DANGER);
                 return orderPresentationStatusDto;
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.PAY_ON.name())) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.PAY_ON.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_LIGHT);
-                if (order.isPrepayment()) {
+                if (orderDto.isPrepayment()) {
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_WARNING);
                     orderPresentationStatusDto.setOrderNo(VIEW_STATUS_SUCCESS);
                 } else {
@@ -186,41 +186,41 @@ public class OrderPresentationStatusDto {
                     orderPresentationStatusDto.setOrderDate(VIEW_STATUS_SUCCESS);
                 }
                 return orderPresentationStatusDto;
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.DOC_NOT_EXIST.name())) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.DOC_NOT_EXIST.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_LIGHT);
                 orderPresentationStatusDto.setOrderId(VIEW_STATUS_DARK);
                 orderPresentationStatusDto.setOrderNo(VIEW_STATUS_DARK);
                 orderPresentationStatusDto.setOrderDate(VIEW_STATUS_DARK);
                 return orderPresentationStatusDto;
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.FINISHED.name())) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.FINISHED.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_SUCCESS);
                 return orderPresentationStatusDto;
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.CANCELED.name())) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.CANCELED.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_DANGER);
                 return orderPresentationStatusDto;
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.DELIVERING.name())) {
-                if (order.isPrepayment()) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.DELIVERING.name())) {
+                if (orderDto.isPrepayment()) {
                     orderPresentationStatusDto.setUnion(VIEW_STATUS_LIGHT);
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderNo(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderDate(VIEW_STATUS_DANGER);
                     return orderPresentationStatusDto;
-                } else if (order.getPaymentType() == OrderPaymentTypes.POSTPAY) {
+                } else if (orderDto.getPaymentType() == OrderPaymentTypes.POSTPAY) {
                     orderPresentationStatusDto.setUnion(VIEW_STATUS_LIGHT);
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderNo(VIEW_STATUS_DANGER);
                     orderPresentationStatusDto.setOrderDate(VIEW_STATUS_DANGER);
                     return orderPresentationStatusDto;
                 }
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.READY_GIVE_AWAY.name())
-                    || order.getStatus().getCode().equals(OrderStatusTypes.READY_GIVE_AWAY_TROUBLE.name())) {
-                if (order.isPrepayment()) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.READY_GIVE_AWAY.name())
+                    || orderDto.getStatus().getCode().equals(OrderStatusTypes.READY_GIVE_AWAY_TROUBLE.name())) {
+                if (orderDto.isPrepayment()) {
                     orderPresentationStatusDto.setUnion(VIEW_STATUS_LIGHT);
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderNo(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderDate(VIEW_STATUS_SUCCESS);
                     return orderPresentationStatusDto;
-                } else if (order.getPaymentType() == OrderPaymentTypes.POSTPAY) {
+                } else if (orderDto.getPaymentType() == OrderPaymentTypes.POSTPAY) {
                     orderPresentationStatusDto.setUnion(VIEW_STATUS_LIGHT);
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderNo(VIEW_STATUS_DANGER);
@@ -228,14 +228,14 @@ public class OrderPresentationStatusDto {
                     return orderPresentationStatusDto;
                 }
 
-            } else if (order.getStatus().getCode().equals(OrderStatusTypes.DELIVERED.name())) {
-                if (order.isPrepayment()) {
+            } else if (orderDto.getStatus().getCode().equals(OrderStatusTypes.DELIVERED.name())) {
+                if (orderDto.isPrepayment()) {
                     orderPresentationStatusDto.setUnion(VIEW_STATUS_LIGHT);
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderNo(VIEW_STATUS_SUCCESS);
                     orderPresentationStatusDto.setOrderDate(VIEW_STATUS_SUCCESS);
                     return orderPresentationStatusDto;
-                } else if (order.getPaymentType() == OrderPaymentTypes.POSTPAY) {
+                } else if (orderDto.getPaymentType() == OrderPaymentTypes.POSTPAY) {
                     orderPresentationStatusDto.setUnion(VIEW_STATUS_LIGHT);
                     orderPresentationStatusDto.setOrderId(VIEW_STATUS_DANGER);
                     orderPresentationStatusDto.setOrderNo(VIEW_STATUS_SUCCESS);
@@ -243,19 +243,19 @@ public class OrderPresentationStatusDto {
                 }
             }
 
-        } else if (order.getType() == OrderTypes.REFUND) {
+        } else if (orderDto.getType() == OrderTypes.REFUND) {
             orderPresentationStatusDto.setUnion(VIEW_STATUS_SECONDARY);
             return orderPresentationStatusDto;
 
-        } else if (order.getType() == OrderTypes.REPAIR || order.getType() == OrderTypes.CHANGE) {
+        } else if (orderDto.getType() == OrderTypes.REPAIR || orderDto.getType() == OrderTypes.CHANGE) {
             orderPresentationStatusDto.setUnion(VIEW_STATUS_SECONDARY);
             return orderPresentationStatusDto;
 
-        } else if (order.getType() == OrderTypes.GIFT) {
+        } else if (orderDto.getType() == OrderTypes.GIFT) {
             orderPresentationStatusDto.setUnion(VIEW_STATUS_SECONDARY);
             return orderPresentationStatusDto;
 
-        } else if (order.getType() == OrderTypes.TEST_DIVE) {
+        } else if (orderDto.getType() == OrderTypes.TEST_DIVE) {
             orderPresentationStatusDto.setUnion(VIEW_STATUS_SECONDARY);
             return orderPresentationStatusDto;
         }

@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 @Data
 @Builder
@@ -36,4 +37,16 @@ public class CompanyDto {
 
     @Schema(description = "email")
     private String email;
+
+    public String getViewLongName() {
+        String viewLongName = StringUtils.isNotEmpty(this.longName) ? longName : this.shortName;
+        viewLongName = viewLongName.trim();
+        if (StringUtils.isEmpty(this.inn)) {
+            return viewLongName;
+        } else {
+            return "ИНН " + this.inn + " " + StringUtils.defaultString(viewLongName);
+        }
+    }
+
+
 }

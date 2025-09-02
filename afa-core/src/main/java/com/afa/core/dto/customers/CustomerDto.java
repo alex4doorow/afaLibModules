@@ -3,6 +3,7 @@ package com.afa.core.dto.customers;
 import com.afa.core.dto.companies.CompanyDto;
 import com.afa.core.dto.persons.PersonFullDto;
 import com.afa.core.dto.persons.PersonShortDto;
+import com.afa.core.enums.ContactTypes;
 import com.afa.core.enums.CustomerTypes;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -74,5 +75,24 @@ public class CustomerDto {
         } else {
             return "";
         }
+    }
+
+    public String getViewLongNameWithContactInfo() {
+        if (company != null) {
+            final String viewLongName = company.getViewLongName();
+            final String contact = getMainContact().getViewLongName() + " " + getMainContact().getPerson().getEmail();
+            return viewLongName.trim() + ", " + contact;
+        }
+        return "";
+    }
+
+    public CustomerContactDto getMainContact() {
+        if (contacts == null || contacts.isEmpty()) {
+            return null;
+        }
+        return contacts.stream()
+                .filter(c -> c.getType() == ContactTypes.MAIN)
+                .findFirst().orElse(null);
+
     }
 }
