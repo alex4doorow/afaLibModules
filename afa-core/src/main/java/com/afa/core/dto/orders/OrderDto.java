@@ -63,7 +63,7 @@ public class OrderDto {
     private OrderDeliveryDto delivery;
 
     @Schema(description = "amounts")
-    private Map<OrderAmountTypes, BigDecimal> amounts;
+    private Map<AmountTypes, BigDecimal> amounts;
 
     @Schema(description = "status")
     private OrderStatusTypeDto status;
