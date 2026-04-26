@@ -16,9 +16,7 @@ buildscript {
 plugins {
     id 'org.springframework.boot' version '3.5.4'
     id 'io.spring.dependency-management' version '1.1.7'
-//	id "com.palantir.git-version" version "0.12.3"
     id "com.google.osdetector" version "1.7.0"
-//	id "org.sonarqube" version "5.0.0.4638"
     id "pmd"
     id "jacoco"
     id "java"
@@ -50,18 +48,10 @@ publishing {
 
 apply plugin: "maven-publish"
 apply plugin: "io.spring.dependency-management"
-//apply plugin: "com.jfrog.artifactory"
-//apply plugin: "de.undercouch.download"
-//apply plugin: "com.github.ksoichiro.console.reporter"
 apply plugin: "application"
-
-apply from: "utils.gradle"
-apply from: "commonDeps.gradle"
 
 group = 'com.afa.core'
 version = '8.0.1-SNAPSHOT'
-
-isRelease = isRelease()
 
 sourceSets {
     integrationTest {
@@ -73,11 +63,6 @@ sourceSets {
         resources.srcDir file("src/integration-test/resources")
     }
 }
-
-//wrapper {
-//	gradleVersion = "8.7"
-//	distributionUrl = distributionUrl.replace("bin", "all")
-//}
 
 repositories {
     mavenCentral()
@@ -180,6 +165,40 @@ repositories {
 }
 
 dependencies {
+
+    // Spring
+    implementation(group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '3.5.4') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-netty'
+    }
+
+    if (osdetector.arch.equals("aarch_64")) {
+        implementation("io.netty:netty-all")
+    }
+
+    implementation "com.google.guava:guava:31.1-jre"
+    implementation "com.nimbusds:nimbus-jose-jwt:9.37.3"
+    implementation "org.apache.commons:commons-lang3:3.18.0"
+    implementation 'commons-codec:commons-codec:1.17.1'
+    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0"
+
+    // Lombok
+    compileOnly "org.projectlombok:lombok"
+    annotationProcessor "org.projectlombok:lombok"
+    implementation "org.projectlombok:lombok-mapstruct-binding:0.2.0"
+
+    // MapStruct, MUST BE SETTLED AFTER Lombok!!!
+    implementation "org.mapstruct:mapstruct:1.5.5.Final"
+    annotationProcessor "org.mapstruct:mapstruct-processor:1.5.5.Final"
+    testAnnotationProcessor "org.mapstruct:mapstruct-processor:1.5.5.Final" // if you are using mapstruct in test code
+
+    // JSON
+    implementation("org.json:json:20250107")
+
+    // Tests
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "org.projectlombok:lombok:1.18.32"
+    testAnnotationProcessor "org.projectlombok:lombok:1.18.32"
+
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.postgresql:postgresql:42.7.7'
     compileOnly 'org.projectlombok:lombok'

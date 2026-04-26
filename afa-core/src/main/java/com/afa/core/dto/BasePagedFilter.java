@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Locale;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -57,7 +58,7 @@ public class BasePagedFilter {
                 if (!validateSortFields(fieldName, fields)) {
                     throw new DevicerException(DevicerErrors.DB_FIELD_SORT_NOT_FOUND, fieldName);
                 }
-                final String ascDesc = sortOrder.length > 1 ? sortOrder[1].trim().toLowerCase() : SORTED_ASC;
+                final String ascDesc = sortOrder.length > 1 ? sortOrder[1].trim().toLowerCase(Locale.getDefault()) : SORTED_ASC;
 
                 switch (ascDesc) {
                     case SORTED_ASC:

@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Locale;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -57,21 +59,9 @@ public class PersonFullDto {
     }
 
     public String getShortName() {
-        final String fn = StringUtils.isBlank(this.firstName) ? "" : this.firstName.substring(0, 1).toUpperCase() + ".";
-        final String mn = StringUtils.isBlank(this.middleName) ? "" : this.middleName.substring(0, 1).toUpperCase() + ".";
+        final String fn = StringUtils.isBlank(this.firstName) ? "" : this.firstName.substring(0, 1).toUpperCase(Locale.getDefault()) + ".";
+        final String mn = StringUtils.isBlank(this.middleName) ? "" : this.middleName.substring(0, 1).toUpperCase(Locale.getDefault()) + ".";
         final String ln = StringUtils.isBlank(this.lastName) ? "" : this.lastName;
-        return ln + " "  + fn + mn;
-    }
-
-    public static void main(String[] args) {
-        final PersonFullDto p1 = PersonFullDto.builder()
-                .firstName("Аркадий")
-                .middleName("Натанович")
-                .lastName("Стругацкий")
-                .build();
-        System.out.println(p1.getFullName());
-        System.out.println(p1.getShortName());
-
-
+        return ln + " " + fn + mn;
     }
 }
