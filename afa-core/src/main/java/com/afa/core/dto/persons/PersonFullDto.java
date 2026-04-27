@@ -1,12 +1,12 @@
 package com.afa.core.dto.persons;
 
 import com.afa.core.dto.dictionaries.CountryDto;
-import io.micrometer.common.util.StringUtils;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Locale;
 
@@ -32,7 +32,7 @@ public class PersonFullDto {
     @Schema(description = "last name", example = "Туманов")
     private String lastName;
 
-    @Schema(description = "phone_number")
+    @Schema(description = "phone number")
     private String phoneNumber;
 
     @Schema(description = "email")
@@ -63,5 +63,11 @@ public class PersonFullDto {
         final String mn = StringUtils.isBlank(this.middleName) ? "" : this.middleName.substring(0, 1).toUpperCase(Locale.getDefault()) + ".";
         final String ln = StringUtils.isBlank(this.lastName) ? "" : this.lastName;
         return ln + " " + fn + mn;
+    }
+
+    public String getViewLongName() {
+        String result = StringUtils.defaultString(this.lastName) + " " + org.apache.commons.lang3.StringUtils.defaultString(this.firstName)
+                + " " + StringUtils.defaultString(this.middleName);
+        return result.trim();
     }
 }

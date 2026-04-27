@@ -36,7 +36,7 @@ public class PersonSaveRequest {
 
     @NotBlank
     @Size(min = 15, max = 15)
-    @Schema(description = "phone number", example = "(916) 111-11-22")
+    @Schema(description = "phone number", example = "(916) 111-22-33")
     private String phoneNumber;
 
     @Column(name = "email")

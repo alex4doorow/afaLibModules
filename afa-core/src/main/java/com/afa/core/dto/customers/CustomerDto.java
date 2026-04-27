@@ -3,6 +3,7 @@ package com.afa.core.dto.customers;
 import com.afa.core.dto.companies.CompanyDto;
 import com.afa.core.dto.persons.PersonFullDto;
 import com.afa.core.dto.persons.PersonShortDto;
+import com.afa.core.enums.AddressTypes;
 import com.afa.core.enums.ContactTypes;
 import com.afa.core.enums.CustomerTypes;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -57,6 +58,16 @@ public class CustomerDto {
         }
     }
 
+    public String getLongName() {
+        if ((company != null) && (type == CustomerTypes.COMPANY || type == CustomerTypes.FOREIGNER_COMPANY)) {
+            return company.getLongName();
+        } else if (person != null) {
+            return person.getViewLongName();
+        } else {
+            return "";
+        }
+    }
+
     public String getInn() {
         if ((company != null) && (type == CustomerTypes.COMPANY || type == CustomerTypes.FOREIGNER_COMPANY)) {
             return company.getInn();
@@ -82,6 +93,8 @@ public class CustomerDto {
             final String viewLongName = company.getViewLongName();
             final String contact = getMainContact().getViewLongName() + " " + getMainContact().getPerson().getEmail();
             return viewLongName.trim() + ", " + contact;
+        } else if (person != null) {
+            return person.getViewLongName() + ", " + person.getPhoneNumber();
         }
         return "";
     }
@@ -92,7 +105,18 @@ public class CustomerDto {
         }
         return contacts.stream()
                 .filter(c -> c.getType() == ContactTypes.MAIN)
-                .findFirst().orElse(null);
+                .findFirst()
+                .orElse(null);
 
+    }
+
+    public CustomerAddressDto getMainAddress() {
+        if (addresses == null || addresses.isEmpty()) {
+            return null;
+        }
+        return addresses.stream()
+                .filter(a -> a.getAddress().getType() == AddressTypes.MAIN)
+                .findFirst()
+                .orElse(null);
     }
 }

@@ -5,16 +5,13 @@ import com.afa.core.dto.dictionaries.OrderStatusTypeDto;
 import com.afa.core.dto.persons.PersonShortDto;
 import com.afa.core.dto.products.ProductCategoryDto;
 import com.afa.core.enums.*;
-import com.afa.core.utils.DateHelper;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -28,7 +25,6 @@ import java.util.Set;
 @AllArgsConstructor
 @Schema(description = "Order")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@SuppressWarnings("PMD.TooManyFields")
 public class OrderDto {
 
     @Schema(description = "id")
@@ -76,7 +72,6 @@ public class OrderDto {
     @Schema(description = "status history")
     private Set<OrderStatusHistoryDto> statusHistory;
 
-    @NotBlank
     @Schema(description = "annotation")
     private String annotation;
 
@@ -88,6 +83,30 @@ public class OrderDto {
 
     @Schema(description = "presentation status")
     private OrderPresentationStatusDto presentation;
+
+    protected OrderDto(final OrderDto source) {
+        this.id = source.id;
+        this.orderNum = source.orderNum;
+        this.orderDate = source.orderDate;
+        this.customer = CustomerDto.builder()
+                .id(source.customer.getId())
+                .build();
+        this.type = source.type;
+        this.sourceType = source.sourceType;
+        this.advertType = source.advertType;
+        this.paymentType = source.paymentType;
+        this.store = source.store;
+        this.productCategory = ProductCategoryDto.builder()
+                .id(source.productCategory.getId())
+                .build();
+        this.delivery = OrderDeliveryDto.builder()
+                .id(source.delivery.getId())
+                .trackCode(source.delivery.getTrackCode())
+                .build();
+        this.annotation = source.annotation;
+        this.status = source.status;
+        // ...
+    }
 
     @JsonIgnore
     public boolean isPrepayment() {
@@ -139,7 +158,7 @@ public class OrderDto {
        return result;
     }
 
-    public String getViewMarketNo() {
+    public String getViewMarketNum() {
         /*
         if (getExternalCrms() != null && getExternalCrms().size() > 0) {
             if (this.getAdvertType() == OrderAdvertTypes.OZON) {
