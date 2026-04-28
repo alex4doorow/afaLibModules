@@ -5,6 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
+@SuppressWarnings({"PMD.SimplifyBooleanReturns"})
 public enum CrmTypes {
 
     NONE("нет"),

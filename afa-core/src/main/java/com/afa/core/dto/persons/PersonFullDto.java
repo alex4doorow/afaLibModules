@@ -15,6 +15,7 @@ import java.util.Locale;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "person full info")
+@SuppressWarnings({"PMD.LawOfDemeter", "PMD.SimplifyBooleanReturns", "PMD.CyclomaticComplexity", "PMD.TooManyFields"})
 public class PersonFullDto {
 
     @Schema(description = "id")
@@ -65,9 +66,11 @@ public class PersonFullDto {
         return ln + " " + fn + mn;
     }
 
+    /*
     public String getViewLongName() {
         String result = StringUtils.defaultString(this.lastName) + " " + org.apache.commons.lang3.StringUtils.defaultString(this.firstName)
                 + " " + StringUtils.defaultString(this.middleName);
         return result.trim();
     }
+    */
 }

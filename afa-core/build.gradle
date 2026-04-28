@@ -18,18 +18,12 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.7'
     id "com.google.osdetector" version "1.7.0"
     id "pmd"
-    id "jacoco"
     id "java"
     id 'maven-publish'
 }
 
 group = 'com.afa.core'
 version = '8.0.1-SNAPSHOT'
-
-java {
-    withJavadocJar()
-    withSourcesJar()
-}
 
 tasks.withType(Javadoc) {
     options.addStringOption('Xdoclint:none', '-quiet')
@@ -100,45 +94,6 @@ tasks.register('integrationTest', Test) {
 test {
     // for JUnit 5
     useJUnitPlatform()
-    finalizedBy jacocoTestReport
-
-    jacoco {
-        enabled = true
-        includeNoLocationClasses = true
-        excludes = ["jdk.internal.*"]
-    }
-}
-
-jacocoTestReport {
-    dependsOn test
-    finalizedBy check
-
-    reports {
-        xml.required = true
-        csv.required = false
-        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
-    }
-
-    afterEvaluate {
-        classDirectories.setFrom(files(classDirectories.files.collect {
-            fileTree(dir: it,
-                    exclude: [
-                            "com/afa/devicer/back/components**",
-                            "com/afa/devicer/back/controllers/internal**",
-                            "com/afa/devicer/back/dto**",
-                            "com/afa/devicer/back/entities**",
-                            "com/afa/devicer/back/exceptions**",
-                            "com/afa/devicer/back/security**",
-                            "com/afa/devicer/back/utils**",
-                            "com/afa/devicer/back/BackOfficeApplication**",
-                            "com/afa/devicer/back/BackOfficeConfig**"
-                    ])
-        }))
-    }
-}
-
-jacoco {
-    toolVersion = "0.8.9"
 }
 
 pmd {

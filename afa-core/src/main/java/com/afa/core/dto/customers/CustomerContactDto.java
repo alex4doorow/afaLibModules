@@ -28,7 +28,7 @@ public class CustomerContactDto {
     private PersonFullDto person;
 
     public String getViewLongName() {
-        String result = StringUtils.defaultString(person.getLastName())
+        final String result = StringUtils.defaultString(person.getLastName())
                 + " " + StringUtils.defaultString(person.getFirstName())
                 + " " + StringUtils.defaultString(person.getMiddleName());
         return result.trim();

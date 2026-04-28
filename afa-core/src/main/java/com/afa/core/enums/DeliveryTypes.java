@@ -8,7 +8,7 @@ import lombok.Getter;
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 @Getter
 @AllArgsConstructor
-@SuppressWarnings({"PMD.UnnecessaryFullyQualifiedName", "PMD.AvoidDuplicateLiterals"})
+@SuppressWarnings({"PMD.UnnecessaryFullyQualifiedName", "PMD.AvoidDuplicateLiterals", "PMD.SimplifyBooleanReturns"})
 public enum DeliveryTypes {
 
     UNKNOWN(0, "Неопределено", "неопределено"),

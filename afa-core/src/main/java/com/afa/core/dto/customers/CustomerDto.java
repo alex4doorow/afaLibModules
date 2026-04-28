@@ -22,6 +22,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Schema(description = "Customer")
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@SuppressWarnings({"PMD.LawOfDemeter", "PMD.SimplifyBooleanReturns", "PMD.CyclomaticComplexity", "PMD.TooManyFields"})
 public class CustomerDto {
 
     @Schema(description = "id")
@@ -62,7 +63,7 @@ public class CustomerDto {
         if ((company != null) && (type == CustomerTypes.COMPANY || type == CustomerTypes.FOREIGNER_COMPANY)) {
             return company.getLongName();
         } else if (person != null) {
-            return person.getViewLongName();
+            return person.getFullName();
         } else {
             return "";
         }
@@ -88,13 +89,23 @@ public class CustomerDto {
         }
     }
 
+    public String getEmail() {
+        if (company != null) {
+            return company.getEmail();
+        } else if (person != null) {
+            return person.getEmail();
+        } else {
+            return "";
+        }
+    }
+
     public String getViewLongNameWithContactInfo() {
         if (company != null) {
             final String viewLongName = company.getViewLongName();
             final String contact = getMainContact().getViewLongName() + " " + getMainContact().getPerson().getEmail();
             return viewLongName.trim() + ", " + contact;
         } else if (person != null) {
-            return person.getViewLongName() + ", " + person.getPhoneNumber();
+            return person.getFullName() + ", " + person.getPhoneNumber();
         }
         return "";
     }

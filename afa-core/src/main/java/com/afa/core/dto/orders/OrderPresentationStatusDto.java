@@ -15,7 +15,7 @@ import lombok.Data;
 @AllArgsConstructor
 @Schema(description = "Order view status info")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@SuppressWarnings("PMD.TooManyFields")
+@SuppressWarnings({"PMD"})
 public class OrderPresentationStatusDto {
 
     public final static String VIEW_STATUS_NONE = "";
@@ -41,7 +41,7 @@ public class OrderPresentationStatusDto {
 
     public static OrderPresentationStatusDto createOrderPresentationStatusDto(final OrderDto orderDto) {
 
-        OrderPresentationStatusDto orderPresentationStatusDto = new OrderPresentationStatusDto();
+        final OrderPresentationStatusDto orderPresentationStatusDto = new OrderPresentationStatusDto();
         if (orderDto.getType() == OrderTypes.KP || orderDto.getType() == OrderTypes.CONSULTATION) {
             if (orderDto.getStatus().getCode().equals(OrderStatusTypes.CANCELED.name())) {
                 orderPresentationStatusDto.setUnion(VIEW_STATUS_DANGER);

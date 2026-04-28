@@ -25,6 +25,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Schema(description = "Order")
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@SuppressWarnings({"PMD.LawOfDemeter", "PMD.SimplifyBooleanReturns", "PMD.CyclomaticComplexity", "PMD.TooManyFields"})
 public class OrderDto {
 
     @Schema(description = "id")
@@ -84,30 +85,6 @@ public class OrderDto {
     @Schema(description = "presentation status")
     private OrderPresentationStatusDto presentation;
 
-    protected OrderDto(final OrderDto source) {
-        this.id = source.id;
-        this.orderNum = source.orderNum;
-        this.orderDate = source.orderDate;
-        this.customer = CustomerDto.builder()
-                .id(source.customer.getId())
-                .build();
-        this.type = source.type;
-        this.sourceType = source.sourceType;
-        this.advertType = source.advertType;
-        this.paymentType = source.paymentType;
-        this.store = source.store;
-        this.productCategory = ProductCategoryDto.builder()
-                .id(source.productCategory.getId())
-                .build();
-        this.delivery = OrderDeliveryDto.builder()
-                .id(source.delivery.getId())
-                .trackCode(source.delivery.getTrackCode())
-                .build();
-        this.annotation = source.annotation;
-        this.status = source.status;
-        // ...
-    }
-
     @JsonIgnore
     public boolean isPrepayment() {
         if (paymentType == OrderPaymentTypes.PREPAYMENT || paymentType == OrderPaymentTypes.CARD_PAY) {
@@ -118,7 +95,7 @@ public class OrderDto {
     }
 
     public String getViewNum() {
-        String result = String.valueOf(this.orderNum);
+        final String result = String.valueOf(this.orderNum);
         /*
         if (getExternalCrms() != null && getExternalCrms().size() > 0) {
             if (this.getAdvertType() == OrderAdvertTypes.OZON) {

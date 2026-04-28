@@ -1,18 +1,9 @@
 package com.afa.core.dto.orders;
 
 import com.afa.core.dto.BasePagedFilter;
-import com.afa.core.dto.customers.CustomerConditionsDto;
-import com.afa.core.dto.products.ProductConditionsDto;
-import com.afa.core.enums.*;
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.springframework.data.util.Pair;
-
-import java.time.LocalDate;
-import java.util.Set;
-import java.util.UUID;
 
 @Data
 @EqualsAndHashCode(callSuper = true)

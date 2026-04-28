@@ -2,10 +2,6 @@ package com.afa.core.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @AllArgsConstructor
