@@ -4,8 +4,6 @@ import com.afa.core.dto.customers.CustomerConditionsDto;
 import com.afa.core.dto.products.ProductConditionsDto;
 import com.afa.core.enums.*;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +20,6 @@ import java.util.UUID;
 @AllArgsConstructor
 public class OrderConditionsDto {
 
-    @NotNull
     @Schema(description = "period exist")
     private boolean periodExist;
 
@@ -44,13 +41,9 @@ public class OrderConditionsDto {
     @Schema(description = "track code not exist")
     private boolean trackCodeNotExist;
 
-    @NotNull
-    @Valid
     @Schema(description = "product conditions")
     private ProductConditionsDto productConditions;
 
-    @NotNull
-    @Valid
     @Schema(description = "customer conditions")
     private CustomerConditionsDto customerConditions;
 

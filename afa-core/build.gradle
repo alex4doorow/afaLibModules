@@ -7,7 +7,6 @@ buildscript {
         }
     }
     dependencies {
-        classpath("org.jfrog.buildinfo:build-info-extractor-gradle:latest.release")
         classpath("de.undercouch:gradle-download-task:4.0.0")
         classpath("gradle.plugin.com.github.ksoichiro:gradle-console-reporter:0.6.3")
     }

@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
 
@@ -39,5 +40,21 @@ public class ProductShortDto {
 
     @Column(name = "deactivated")
     private Boolean deactivated;
+
+    public String getViewName() {
+        final int MAX_VIEW_LENGTH = 139;
+        final String result;
+        if (StringUtils.isNotEmpty(this.sku)) {
+            result = "[" + StringUtils.upperCase(this.sku) + "] " + this.shortName;
+        } else {
+            result = this.shortName;
+        }
+        final int index = Math.min(result.length(), MAX_VIEW_LENGTH);
+        if (index < result.length()) {
+            return result.substring(0, index) + "...";
+        } else {
+            return result.substring(0, index);
+        }
+    }
 
 }

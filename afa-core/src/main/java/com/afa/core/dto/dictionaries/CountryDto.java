@@ -22,4 +22,13 @@ public class CountryDto {
 
     @Schema(description = "short name")
     private String name;
+
+    @Schema(description = "ISO code (2 digits)")
+    private String isoCode2;
+
+    @Schema(description = "ISO code (3 digits)")
+    private String isoCode3;
+
+    @Schema(description = "ISO code (prefix phone number)")
+    private String isdCode;
 }

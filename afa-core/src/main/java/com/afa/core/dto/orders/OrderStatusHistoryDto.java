@@ -23,6 +23,9 @@ public class OrderStatusHistoryDto {
     @Schema(description = "id")
     private Long id;
 
+    @Schema(description = "row number")
+    private Integer num;
+
     @Schema(description = "status")
     private OrderStatusTypeDto status;
 

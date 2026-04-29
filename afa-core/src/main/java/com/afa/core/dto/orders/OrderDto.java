@@ -16,8 +16,8 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 @Data
 @Builder
@@ -68,10 +68,10 @@ public class OrderDto {
     private OrderStatusTypeDto status;
 
     @Schema(description = "items")
-    private Set<OrderItemDto> items;
+    private List<OrderItemDto> items;
 
     @Schema(description = "status history")
-    private Set<OrderStatusHistoryDto> statusHistory;
+    private List<OrderStatusHistoryDto> statusHistory;
 
     @Schema(description = "annotation")
     private String annotation;

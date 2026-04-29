@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
 
 @Data
 @Builder
@@ -26,11 +25,4 @@ public class CustomerContactDto {
 
     @Schema(description = "person")
     private PersonFullDto person;
-
-    public String getViewLongName() {
-        final String result = StringUtils.defaultString(person.getLastName())
-                + " " + StringUtils.defaultString(person.getFirstName())
-                + " " + StringUtils.defaultString(person.getMiddleName());
-        return result.trim();
-    }
 }

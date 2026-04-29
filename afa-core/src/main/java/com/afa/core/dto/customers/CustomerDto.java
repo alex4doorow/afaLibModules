@@ -1,6 +1,7 @@
 package com.afa.core.dto.customers;
 
 import com.afa.core.dto.companies.CompanyDto;
+import com.afa.core.dto.dictionaries.CountryDto;
 import com.afa.core.dto.persons.PersonFullDto;
 import com.afa.core.dto.persons.PersonShortDto;
 import com.afa.core.enums.AddressTypes;
@@ -49,6 +50,16 @@ public class CustomerDto {
     @Schema(description = "создано", example = "2024-06-16T07:42:45Z")
     private Instant dateAdded;
 
+    public CountryDto getCountry() {
+        if (company != null) {
+            return company.getCountry();
+        } else if (person != null) {
+            return person.getCountry();
+        } else {
+            return null;
+        }
+    }
+
     public String getShortName() {
         if ((company != null) && (type == CustomerTypes.COMPANY || type == CustomerTypes.FOREIGNER_COMPANY)) {
             return company.getShortName();
@@ -89,6 +100,12 @@ public class CustomerDto {
         }
     }
 
+    public String getFullPhoneNumber() {
+        return getCountry() == null
+                ? getPhoneNumber()
+                : getCountry().getIsdCode() + " " + getPhoneNumber();
+    }
+
     public String getEmail() {
         if (company != null) {
             return company.getEmail();
@@ -102,10 +119,10 @@ public class CustomerDto {
     public String getViewLongNameWithContactInfo() {
         if (company != null) {
             final String viewLongName = company.getViewLongName();
-            final String contact = getMainContact().getViewLongName() + " " + getMainContact().getPerson().getEmail();
+            final String contact = getMainContact().getPerson().getFullName() + " " + getMainContact().getPerson().getEmail();
             return viewLongName.trim() + ", " + contact;
         } else if (person != null) {
-            return person.getFullName() + ", " + person.getPhoneNumber();
+            return person.getFullName() + ", " + getFullPhoneNumber();
         }
         return "";
     }

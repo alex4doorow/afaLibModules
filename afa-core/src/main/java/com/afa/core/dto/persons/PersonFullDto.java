@@ -66,11 +66,9 @@ public class PersonFullDto {
         return ln + " " + fn + mn;
     }
 
-    /*
-    public String getViewLongName() {
-        String result = StringUtils.defaultString(this.lastName) + " " + org.apache.commons.lang3.StringUtils.defaultString(this.firstName)
-                + " " + StringUtils.defaultString(this.middleName);
-        return result.trim();
+    public String getFullPhoneNumber() {
+        return getCountry() == null
+                ? getPhoneNumber()
+                : getCountry().getIsdCode() + " " + getPhoneNumber();
     }
-    */
 }

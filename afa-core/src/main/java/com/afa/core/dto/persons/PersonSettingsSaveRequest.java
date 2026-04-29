@@ -1,4 +1,4 @@
-package com.afa.core.dto.employee;
+package com.afa.core.dto.persons;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -9,8 +9,8 @@ import lombok.Data;
 @Builder
 @AllArgsConstructor
 @Schema(description = "Customer")
-public class EmployeeSettingsSaveRequest {
+public class PersonSettingsSaveRequest {
 
-    private final EmployeeSettingsDto settings;
+    private final PersonSettingsDto settings;
 
 }
