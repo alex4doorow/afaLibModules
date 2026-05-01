@@ -1,7 +1,11 @@
 package com.afa.core.utils;
 
+import java.math.BigDecimal;
+
 @SuppressWarnings("PMD.TooManyMethods")
 public final class NumericHelper {
+
+    public static final BigDecimal ONE_HUNDRED = BigDecimal.valueOf(100);
 
     private NumericHelper() {
     }

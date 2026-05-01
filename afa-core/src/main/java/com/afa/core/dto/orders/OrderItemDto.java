@@ -31,6 +31,9 @@ public class OrderItemDto {
     @Schema(description = "price")
     private BigDecimal price;
 
+    @Schema(description = "price supplier")
+    private BigDecimal priceSupplier;
+
     @Schema(description = "quantity")
     private Integer quantity;
 

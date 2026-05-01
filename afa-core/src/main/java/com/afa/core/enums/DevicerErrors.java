@@ -6,6 +6,7 @@ import lombok.Getter;
 @SuppressWarnings("PMD.ExcessivePublicCount")
 public enum DevicerErrors {
     UNKNOWN_ERROR("Неизвестная ошибка"),
+    UNKNOWN_VALIDATION_ERROR("Неизвестная ошибка валидации. {0}"),
     DB_FIELD_SORT_NOT_FOUND("Поле, указанное в сортировке <{0}> не существует"),
     DB_FIELD_ASC_DESC_SORT_NOT_FOUND("Направление сортировки <{0}> не существует. Выбирайте два варианта: asc|desc"),
     DB_FIELD_VALUE_NULL("Значение поля <{0}.{1}> не может быть равно null"),
@@ -14,7 +15,6 @@ public enum DevicerErrors {
     DB_FIELD_VALUE_SLAVE_DIFFERENT_MASTER("Значение поля <{0}.{1}> в дочерней сущности <{2}> не совпадает со значением в родительской сущности <{3}>"),
     DB_FIELD_VALUE_NOT_NUMBER("Значение поля <{0}.{1}> не число <{2}>"),
     DB_ENTITY_NOT_FOUND("Сущность <{0}> с ключом <{1}> не найдена в БД"),
-    MANAGER_UUID_EMPTY("<{0}> UUID для <{1}> пусто"),
     KEYCLOAK_UUID_EMPTY("Keycloak UUID пуст"),
     KEYCLOAK_UUID_EXISTS_ALREADY("Keycloak UUID <{0}> уже существует"),
     KEYCLOAK_UUID_UNKNOWN("Keycloak UUID <{0}> не найден в БД"),
@@ -38,6 +38,7 @@ public enum DevicerErrors {
 
     // order
     ORDER_PERIOD_NOT_EXIST("Установлен признак \"задан период\" - необходимо задать диапазон дат (с, по)"),
+    ORDER_NUM_DUPLICATE("Заказ с таким номером уже существует {0}"),
 
     // s3
     S3_ERROR("Сервис S3, {0}, ошибка {1}")

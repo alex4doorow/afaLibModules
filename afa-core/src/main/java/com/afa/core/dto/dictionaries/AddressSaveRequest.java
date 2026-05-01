@@ -1,6 +1,7 @@
 package com.afa.core.dto.dictionaries;
 
 import com.afa.core.enums.AddressTypes;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -25,6 +26,7 @@ public class AddressSaveRequest {
 
     @NotNull
     @Schema(description = "address type")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private AddressTypes type;
 
     @Size(min = 6, max = 6)

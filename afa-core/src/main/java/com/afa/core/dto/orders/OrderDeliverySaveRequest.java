@@ -5,6 +5,7 @@ import com.afa.core.dto.persons.PersonSaveRequest;
 import com.afa.core.enums.DeliveryPaymentTypes;
 import com.afa.core.enums.DeliveryPriceTypes;
 import com.afa.core.enums.DeliveryTypes;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Future;
@@ -28,13 +29,16 @@ public class OrderDeliverySaveRequest {
 
     @NotNull
     @Schema(description = "delivery type")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private DeliveryTypes deliveryType;
 
     @NotNull
     @Schema(description = "payment delivery type")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private DeliveryPaymentTypes deliveryPaymentType;
 
     @Schema(description = "delivery price type")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private DeliveryPriceTypes deliveryPriceType;
 
     @NotNull

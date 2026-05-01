@@ -1,9 +1,13 @@
 package com.afa.core.dto;
 
 import com.afa.core.components.ExcludeFromJacocoGeneratedReport;
+import com.afa.core.exceptions.ViolationItem;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -18,6 +22,8 @@ public class BaseResponse {
     @Schema(description = "error message if exists", example = "clientId cannot be null")
     private String errorMessage;
 
+    @Schema(description = "violation message if exists")
+    private List<ViolationItem> violations;
 
     /**
      * Create OK response, used for check save request
@@ -34,6 +40,7 @@ public class BaseResponse {
     public BaseResponse(final String errorMessage) {
         this.result = "error";
         this.errorMessage = errorMessage;
+        this.violations = new ArrayList<>();
     }
 
     /**
@@ -46,5 +53,6 @@ public class BaseResponse {
         this.result = "error";
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
+        this.violations = new ArrayList<>();
     }
 }

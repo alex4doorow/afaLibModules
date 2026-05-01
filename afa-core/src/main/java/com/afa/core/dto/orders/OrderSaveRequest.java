@@ -1,6 +1,7 @@
 package com.afa.core.dto.orders;
 
 import com.afa.core.enums.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
@@ -34,22 +35,27 @@ public class OrderSaveRequest {
 
     @NotNull
     @Schema(description = "order type", example = "ORDER")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private OrderTypes type;
 
     @NotNull
     @Schema(description = "source type", example = "CALL")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private OrderSourceTypes sourceType;
 
     @NotNull
     @Schema(description = "advert type", example = "ADVERT")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private OrderAdvertTypes advertType;
 
     @NotNull
     @Schema(description = "payment type", example = "PREPAYMENT")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private OrderPaymentTypes paymentType;
 
     @NotNull
     @Schema(description = "store")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private StoreTypes store;
 
     @NotNull
