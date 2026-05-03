@@ -1,6 +1,6 @@
 package com.afa.core.dto.customers;
 
-import com.afa.core.dto.persons.PersonFullDto;
+import com.afa.core.dto.people.PersonFullDto;
 import com.afa.core.enums.ContactTypes;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;

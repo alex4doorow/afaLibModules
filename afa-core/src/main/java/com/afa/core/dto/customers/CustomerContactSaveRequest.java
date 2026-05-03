@@ -1,6 +1,6 @@
 package com.afa.core.dto.customers;
 
-import com.afa.core.dto.persons.PersonSaveRequest;
+import com.afa.core.dto.people.PersonSaveRequest;
 import com.afa.core.enums.ContactTypes;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;

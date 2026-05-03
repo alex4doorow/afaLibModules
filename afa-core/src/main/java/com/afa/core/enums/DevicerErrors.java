@@ -40,6 +40,12 @@ public enum DevicerErrors {
     ORDER_PERIOD_NOT_EXIST("Установлен признак \"задан период\" - необходимо задать диапазон дат (с, по)"),
     ORDER_NUM_DUPLICATE("Заказ с таким номером уже существует {0}"),
 
+    // integration
+    INTEGRATION_CDEK_AUTHORIZATION_ERRORS("Ошибка авторизации в сервис СДЕК: {0}"),
+    INTEGRATION_CDEK_CITIES_ERRORS("Ошибка получения городов из сервиса СДЕК: {0}"),
+
+    INTEGRATION_SUPPLIER_SITITEK_FEED_DOWNLOAD_ERRORS("Ошибка загрузки фида из файла СИТИТЕК pricer.xls: {0}"),
+
     // s3
     S3_ERROR("Сервис S3, {0}, ошибка {1}")
     ;

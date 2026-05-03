@@ -2,8 +2,8 @@ package com.afa.core.dto.customers;
 
 import com.afa.core.dto.companies.CompanyDto;
 import com.afa.core.dto.dictionaries.CountryDto;
-import com.afa.core.dto.persons.PersonFullDto;
-import com.afa.core.dto.persons.PersonShortDto;
+import com.afa.core.dto.people.PersonFullDto;
+import com.afa.core.dto.people.PersonShortDto;
 import com.afa.core.enums.AddressTypes;
 import com.afa.core.enums.ContactTypes;
 import com.afa.core.enums.CustomerTypes;

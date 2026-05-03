@@ -1,4 +1,4 @@
-package com.afa.core.dto.persons;
+package com.afa.core.dto.people;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;

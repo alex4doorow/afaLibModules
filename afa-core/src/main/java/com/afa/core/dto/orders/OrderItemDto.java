@@ -1,6 +1,6 @@
 package com.afa.core.dto.orders;
 
-import com.afa.core.dto.products.ProductShortDto;
+import com.afa.core.dto.products.ProductDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -26,7 +26,7 @@ public class OrderItemDto {
     private Long itemNum;
 
     @Schema(description = "product")
-    private ProductShortDto product;
+    private ProductDto product;
 
     @Schema(description = "price")
     private BigDecimal price;
@@ -38,7 +38,7 @@ public class OrderItemDto {
     private Integer quantity;
 
     @Schema(description = "discount rate")
-    private Integer discountRate;
+    private BigDecimal discountRate;
 
     @Schema(description = "amount")
     private BigDecimal amount;

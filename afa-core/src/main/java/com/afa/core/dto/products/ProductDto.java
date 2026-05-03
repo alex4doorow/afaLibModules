@@ -1,7 +1,6 @@
 package com.afa.core.dto.products;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,31 +14,34 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "product info")
-public class ProductShortDto {
+public class ProductDto {
 
     @Schema(description = "id")
     private Long id;
 
-    @Column(name = "sku")
+    @Schema(name = "sku")
     private String sku;
 
-    @Column(name = "short name")
+    @Schema(name = "short name")
     private String shortName;
 
-    @Column(name = "long name")
+    @Schema(name = "long name")
     private String longName;
 
-    @Column(name = "quantity")
+    @Schema(name = "quantity")
     private Integer quantity;
 
-    @Column(name = "price")
+    @Schema(name = "price")
     private BigDecimal price;
 
-    @Column(name = "composite")
+    @Schema(name = "composite")
     private Boolean composite;
 
-    @Column(name = "deactivated")
+    @Schema(name = "deactivated")
     private Boolean deactivated;
+
+    @Schema(name = "stock")
+    private StockSupplierProductDto stock;
 
     public String getViewName() {
         final int MAX_VIEW_LENGTH = 139;

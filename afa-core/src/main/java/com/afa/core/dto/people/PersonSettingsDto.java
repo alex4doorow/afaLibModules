@@ -1,4 +1,4 @@
-package com.afa.core.dto.persons;
+package com.afa.core.dto.people;
 
 import com.afa.core.dto.customers.CustomerConditionsDto;
 import com.afa.core.dto.orders.OrderConditionsDto;

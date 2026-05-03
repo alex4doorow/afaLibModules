@@ -1,4 +1,4 @@
-package com.afa.core.dto.persons;
+package com.afa.core.dto.people;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;

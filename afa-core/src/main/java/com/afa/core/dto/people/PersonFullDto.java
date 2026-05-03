@@ -1,4 +1,4 @@
-package com.afa.core.dto.persons;
+package com.afa.core.dto.people;
 
 import com.afa.core.dto.dictionaries.CountryDto;
 import io.swagger.v3.oas.annotations.media.Schema;

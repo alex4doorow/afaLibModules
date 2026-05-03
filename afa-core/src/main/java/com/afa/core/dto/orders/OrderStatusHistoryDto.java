@@ -1,7 +1,7 @@
 package com.afa.core.dto.orders;
 
 import com.afa.core.dto.dictionaries.OrderStatusTypeDto;
-import com.afa.core.dto.persons.PersonShortDto;
+import com.afa.core.dto.people.PersonShortDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;

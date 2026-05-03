@@ -1,7 +1,7 @@
 package com.afa.core.dto.orders;
 
 import com.afa.core.dto.dictionaries.AddressSaveRequest;
-import com.afa.core.dto.persons.PersonSaveRequest;
+import com.afa.core.dto.people.PersonSaveRequest;
 import com.afa.core.enums.DeliveryPaymentTypes;
 import com.afa.core.enums.DeliveryPriceTypes;
 import com.afa.core.enums.DeliveryTypes;

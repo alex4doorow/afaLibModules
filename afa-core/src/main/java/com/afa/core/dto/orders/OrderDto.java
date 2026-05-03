@@ -2,7 +2,7 @@ package com.afa.core.dto.orders;
 
 import com.afa.core.dto.customers.CustomerDto;
 import com.afa.core.dto.dictionaries.OrderStatusTypeDto;
-import com.afa.core.dto.persons.PersonShortDto;
+import com.afa.core.dto.people.PersonShortDto;
 import com.afa.core.dto.products.ProductCategoryDto;
 import com.afa.core.enums.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;

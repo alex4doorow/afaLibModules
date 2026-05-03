@@ -2,7 +2,7 @@ package com.afa.core.dto.orders;
 
 import com.afa.core.dto.dictionaries.AddressDto;
 import com.afa.core.dto.dictionaries.DeliveryTypeDto;
-import com.afa.core.dto.persons.PersonFullDto;
+import com.afa.core.dto.people.PersonFullDto;
 import com.afa.core.enums.DeliveryPaymentTypes;
 import com.afa.core.enums.DeliveryPriceTypes;
 import com.fasterxml.jackson.annotation.JsonInclude;
