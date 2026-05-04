@@ -35,10 +35,13 @@ public enum DevicerErrors {
     CUSTOMER_COMPANY_TYPE_MUST_NULL("Тип клиента требует отсутствия ввода данных по компании <{0}>"),
     CUSTOMER_PERSON_TYPE_MUST_NULL("Тип клиента требует отсутствия ввода данных по персоне <{0}>"),
     CUSTOMER_COMPANY_BY_INN_EXIST("Компания с таким ИНН уже существует <{0}>"),
+    CUSTOMER_CONTACT_NOT_FOUND("У покупателя не указаны контактные данные"),
 
     // order
     ORDER_PERIOD_NOT_EXIST("Установлен признак \"задан период\" - необходимо задать диапазон дат (с, по)"),
     ORDER_NUM_DUPLICATE("Заказ с таким номером уже существует {0}"),
+    ORDER_DELIVERY_RECIPIENT_NOT_FOUND("Получатель заказа не определен <{0}>"),
+
 
     // integration
     INTEGRATION_CDEK_AUTHORIZATION_ERRORS("Ошибка авторизации в сервис СДЕК: {0}"),

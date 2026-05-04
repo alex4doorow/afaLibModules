@@ -26,9 +26,11 @@ public class CustomerSaveRequest {
     @Schema(description = "customer type")
     private CustomerTypes type;
 
+    @Valid
     @Schema(description = "company")
     private CompanySaveRequest company;
 
+    @Valid
     @Schema(description = "person")
     private PersonSaveRequest person;
 

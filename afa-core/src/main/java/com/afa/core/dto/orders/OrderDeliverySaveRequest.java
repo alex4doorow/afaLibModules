@@ -1,7 +1,6 @@
 package com.afa.core.dto.orders;
 
 import com.afa.core.dto.dictionaries.AddressSaveRequest;
-import com.afa.core.dto.people.PersonSaveRequest;
 import com.afa.core.enums.DeliveryPaymentTypes;
 import com.afa.core.enums.DeliveryPriceTypes;
 import com.afa.core.enums.DeliveryTypes;
@@ -54,7 +53,7 @@ public class OrderDeliverySaveRequest {
     @Valid
     @NotNull
     @Schema(description = "recipient")
-    private PersonSaveRequest recipient;
+    private OrderDeliveryRecipientSaveRequest recipient;
 
     @Schema(description = "annotation")
     private String annotation;
@@ -68,4 +67,7 @@ public class OrderDeliverySaveRequest {
 
     @Schema(description = "time out")
     private LocalTime timeOut;
+
+    @Schema(description = "customer equals recipient")
+    private boolean customerEqualsRecipient;
 }

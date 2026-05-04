@@ -32,7 +32,7 @@ public class OrderItemDto {
     private BigDecimal price;
 
     @Schema(description = "price supplier")
-    private BigDecimal priceSupplier;
+    private BigDecimal supplierPrice;
 
     @Schema(description = "quantity")
     private Integer quantity;
@@ -44,5 +44,5 @@ public class OrderItemDto {
     private BigDecimal amount;
 
     @Schema(description = "amount supplier")
-    private BigDecimal amountSupplier;
+    private BigDecimal supplierAmount;
 }
