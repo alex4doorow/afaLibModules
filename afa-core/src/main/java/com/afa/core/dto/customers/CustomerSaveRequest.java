@@ -39,14 +39,21 @@ public class CustomerSaveRequest {
     private UUID countryId;
 
     @Valid
-    @NotNull
-    @Size(max = 10)
+    @Size(max = 2)
     @Schema(description = "customer contacts")
     private Set<CustomerContactSaveRequest> contacts;
 
     @Valid
-    @NotNull
     @Size(max = 2)
     @Schema(description = "customer addresses")
     private Set<CustomerAddressSaveRequest> addresses;
+
+    public boolean isPerson() {
+        return person != null;
+    }
+
+    public boolean isCompany() {
+        return company != null;
+    }
+
 }

@@ -147,4 +147,13 @@ public class CustomerDto {
                 .findFirst()
                 .orElse(null);
     }
+
+    public boolean isPerson() {
+        return person != null;
+    }
+
+    public boolean isCompany() {
+        return company != null;
+    }
+
 }

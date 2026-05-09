@@ -35,10 +35,11 @@ public class PersonSaveRequest {
     private String lastName;
 
     @NotBlank
-    @Size(min = 15, max = 15)
+    @Size(min = 11, max = 15)
     @Schema(description = "phone number", example = "(916) 111-22-33")
     private String phoneNumber;
 
+    @Size(max = 64)
     @Column(name = "email")
     private String email;
 }

@@ -12,7 +12,6 @@ import org.springframework.data.util.Pair;
 
 import java.time.LocalDate;
 import java.util.Set;
-import java.util.UUID;
 
 @Data
 @Builder
@@ -20,14 +19,14 @@ import java.util.UUID;
 @AllArgsConstructor
 public class OrderConditionsDto {
 
+    @Schema(description = "order id")
+    private Long id;
+
     @Schema(description = "period exist")
     private boolean periodExist;
 
     @Schema(description = "period")
     private Pair<LocalDate, LocalDate> period;
-
-    @Schema(description = "order id")
-    private UUID id;
 
     @Schema(description = "order num")
     private Long orderNum;

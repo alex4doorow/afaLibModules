@@ -31,10 +31,13 @@ public enum DevicerErrors {
 
     // customer
     CUSTOMER_COMPANY_TYPE_FORBIDDEN("Тип клиента требует ввода данных по компании <{0}>"),
-    CUSTOMER_PERSON_TYPE_FORBIDDEN("Тип клиента требует ввода данных по персоне <{0}>"),
     CUSTOMER_COMPANY_TYPE_MUST_NULL("Тип клиента требует отсутствия ввода данных по компании <{0}>"),
-    CUSTOMER_PERSON_TYPE_MUST_NULL("Тип клиента требует отсутствия ввода данных по персоне <{0}>"),
     CUSTOMER_COMPANY_BY_INN_EXIST("Компания с таким ИНН уже существует <{0}>"),
+
+    CUSTOMER_PERSON_TYPE_FORBIDDEN("Тип клиента требует ввода данных по персоне <{0}>"),
+    CUSTOMER_PERSON_TYPE_MUST_NULL("Тип клиента требует отсутствия ввода данных по персоне <{0}>"),
+    CUSTOMER_PERSON_BY_PHONE_EXIST("Покупатель с таким номером телефона уже существует <{0}>"),
+
     CUSTOMER_CONTACT_NOT_FOUND("У покупателя не указаны контактные данные"),
 
     // order

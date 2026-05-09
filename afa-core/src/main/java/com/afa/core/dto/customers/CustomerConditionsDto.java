@@ -18,7 +18,7 @@ import java.util.Set;
 public class CustomerConditionsDto {
 
     @Schema(description = "customer id")
-    private int id;
+    private Long id;
 
     @Schema(description = "list of customer types")
     private Set<CustomerTypes> customerTypes;

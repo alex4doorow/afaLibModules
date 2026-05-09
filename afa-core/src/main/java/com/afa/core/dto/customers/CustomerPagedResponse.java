@@ -15,13 +15,14 @@ import java.util.List;
 public class CustomerPagedResponse extends BasePagedResponse {
 
     @Schema(description = "customer list with all data")
-    private final List<CustomerDto> orders;
+    private final List<CustomerDto> customers;
 
     public CustomerPagedResponse(
-            final long totalElements, final int totalPages,
+            final long totalElements,
+            final int totalPages,
             final boolean hasPrev, final boolean hasNext,
-            final List<CustomerDto> orders) {
+            final List<CustomerDto> customers) {
         super(totalElements, totalPages, hasPrev, hasNext);
-        this.orders = orders;
+        this.customers = customers;
     }
 }

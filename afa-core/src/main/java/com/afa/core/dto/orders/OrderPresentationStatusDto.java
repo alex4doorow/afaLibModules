@@ -6,37 +6,50 @@ import com.afa.core.enums.OrderStatusTypes;
 import com.afa.core.enums.OrderTypes;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
-@Builder
-@AllArgsConstructor
+@Getter
 @Schema(description = "Order view status info")
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 @SuppressWarnings({"PMD"})
 public class OrderPresentationStatusDto {
 
-    public final static String VIEW_STATUS_NONE = "";
-    public final static String VIEW_STATUS_SUCCESS = "success";
-    public final static String VIEW_STATUS_WARNING = "warning";
-    public final static String VIEW_STATUS_DANGER = "danger";
-    public final static String VIEW_STATUS_INFO = "info";
-    public final static String VIEW_STATUS_SECONDARY = "secondary";
-    public final static String VIEW_STATUS_LIGHT = "light";
-    public final static String VIEW_STATUS_DARK = "dark";
+    private final static String VIEW_STATUS_NONE = "";
+    private final static String VIEW_STATUS_SUCCESS = "success";
+    private final static String VIEW_STATUS_WARNING = "warning";
+    private final static String VIEW_STATUS_DANGER = "danger";
+    private final static String VIEW_STATUS_INFO = "info";
+    private final static String VIEW_STATUS_SECONDARY = "secondary";
+    private final static String VIEW_STATUS_LIGHT = "light";
+    private final static String VIEW_STATUS_DARK = "dark";
 
+    @Setter
     private String union;
     private String orderId;
     private String orderNo;
     private String orderDate;
 
-    public OrderPresentationStatusDto() {
-        this.union = VIEW_STATUS_LIGHT;
-        this.orderId = VIEW_STATUS_LIGHT;
-        this.orderNo = VIEW_STATUS_LIGHT;
-        this.orderDate = VIEW_STATUS_LIGHT;
+    public void setOrderId(final String orderId) {
+        this.union = VIEW_STATUS_NONE;
+        this.orderId = orderId;
+    }
+
+    public void setOrderNo(final String orderNo) {
+        this.union = VIEW_STATUS_NONE;
+        this.orderNo = orderNo;
+    }
+
+    public void setOrderDate(final String orderDate) {
+        this.union = VIEW_STATUS_NONE;
+        this.orderDate = orderDate;
+    }
+
+    private OrderPresentationStatusDto() {
+        union = VIEW_STATUS_LIGHT;
+        orderId = VIEW_STATUS_LIGHT;
+        orderNo = VIEW_STATUS_LIGHT;
+        orderDate = VIEW_STATUS_LIGHT;
     }
 
     public static OrderPresentationStatusDto createOrderPresentationStatusDto(final OrderDto orderDto) {
