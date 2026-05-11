@@ -6,6 +6,7 @@ import lombok.Getter;
 @SuppressWarnings("PMD.ExcessivePublicCount")
 public enum DevicerErrors {
     UNKNOWN_ERROR("Неизвестная ошибка"),
+    UNKNOWN_ILLEGAL_ARGUMENT_ERROR("Ошибка привидения типов"),
     UNKNOWN_VALIDATION_ERROR("Неизвестная ошибка валидации. {0}"),
     DB_FIELD_SORT_NOT_FOUND("Поле, указанное в сортировке <{0}> не существует"),
     DB_FIELD_ASC_DESC_SORT_NOT_FOUND("Направление сортировки <{0}> не существует. Выбирайте два варианта: asc|desc"),
@@ -44,12 +45,16 @@ public enum DevicerErrors {
     ORDER_PERIOD_NOT_EXIST("Установлен признак \"задан период\" - необходимо задать диапазон дат (с, по)"),
     ORDER_NUM_DUPLICATE("Заказ с таким номером уже существует {0}"),
     ORDER_DELIVERY_RECIPIENT_NOT_FOUND("Получатель заказа не определен <{0}>"),
+    ORDER_DELIVERY_CALCULATE_CDEK_ECONOMY_NOT_EXIST("Нет эконом доставки для данного направления"),
+    ORDER_DELIVERY_CALCULATE_ERROR("Ошибка расчета доставки"),
 
-
-    // integration
+    // cdek
     INTEGRATION_CDEK_AUTHORIZATION_ERRORS("Ошибка авторизации в сервис СДЕК: {0}"),
     INTEGRATION_CDEK_CITIES_ERRORS("Ошибка получения городов из сервиса СДЕК: {0}"),
+    INTEGRATION_CDEK_DELIVERY_POINTS_ERRORS("Ошибка получения пунктов выдачи из сервиса СДЕК: {0}"),
+    INTEGRATION_CDEK_CALC_TARIFF_ERRORS("Ошибка расчета тарифа из сервиса СДЕК: {0}"),
 
+    // sititek
     INTEGRATION_SUPPLIER_SITITEK_FEED_DOWNLOAD_ERRORS("Ошибка загрузки фида из файла СИТИТЕК pricer.xls: {0}"),
 
     // s3

@@ -22,6 +22,18 @@ public class AddressDto {
     @Schema(description = "address type")
     private AddressTypes type;
 
+    @Schema(description = "country")
+    private CountryDto country;
+
+    @Schema(description = "city code")
+    private String cityCode;
+
+    @Schema(description = "city")
+    private String city;
+
+    @Schema(description = "delivery point code")
+    private String deliperyPointCode;
+
     @Schema(description = "post code")
     private String postCode;
 

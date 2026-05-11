@@ -29,6 +29,15 @@ public class AddressSaveRequest {
     @Schema(description = "country id")
     private UUID countryId;
 
+    @Schema(description = "city code")
+    private String cityCode;
+
+    @Schema(description = "city")
+    private String city;
+
+    @Schema(description = "delivery point code")
+    private String deliperyPointCode;
+
     @Size(min = 6, max = 6)
     @Schema(description = "post code")
     private String postCode;

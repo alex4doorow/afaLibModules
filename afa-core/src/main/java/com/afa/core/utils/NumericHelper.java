@@ -29,4 +29,8 @@ public final class NumericHelper {
         final DecimalFormat df = new DecimalFormat(pattern);
         return df.format(value);
     }
+
+    public static BigDecimal weightG2Kg(final int weightG) {
+        return BigDecimal.valueOf(0.001).multiply(BigDecimal.valueOf(weightG));
+    }
 }

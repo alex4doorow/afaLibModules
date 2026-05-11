@@ -42,4 +42,11 @@ public class OrderItemSaveRequest {
     @Schema(description = "discount rate")
     private BigDecimal discountRate;
 
+    @Schema(description = "amount")
+    private BigDecimal amount;
+
+    @Schema(description = "supplier price")
+    private BigDecimal supplierPrice;
+
+
 }

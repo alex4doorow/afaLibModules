@@ -8,14 +8,18 @@ import lombok.Getter;
 public enum AmountTypes {
 		
 	UNKNOWN(0, "не определена"),
+    TOTAL(6, "итоговая сумма за товар"),
 	TOTAL_WITH_DELIVERY(1, "итоговая сумма к оплате клиенту (равна итоговой детализации + стоимости доставки)"),
 	BILL(2, "сумма чека (наш доход)"),
 	SUPPLIER(3, "стоимость закупки"),
 	MARGIN(4, "прибыль за вычетом налогов (amount_bill - amount_supplier)"),
 	POSTPAY(5, "стоимость постоплаты"),
+    TOTAL_WEIGHT_GRAM(9, "weight gram"),
+    TOTAL_LENGTH_CM(9, "length cm"),
+    TOTAL_HEIGHT_CM(9, "height cm"),
+    TOTAL_WIDTH_CM(9, "width cm"),
 
 	// только для отчетов
-	TOTAL(6, "итоговая сумма за товар"),
 	DELIVERY(7, "стоимость доставки"),
 	CASH_ON_DELIVERY(8, "наложенный платеж"),
 

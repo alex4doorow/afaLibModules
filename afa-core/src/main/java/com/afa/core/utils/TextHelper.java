@@ -1,9 +1,26 @@
 package com.afa.core.utils;
 
+import org.apache.commons.lang3.StringUtils;
+
 @SuppressWarnings({"PMD.AvoidLiteralsInIfCondition"})
 public final class TextHelper {
 
     private TextHelper() {
+    }
+
+    public static String numberDigit(final String stringValue) {
+
+        if (StringUtils.isEmpty(stringValue)) {
+            return "";
+        }
+        final StringBuilder result = new StringBuilder();
+        for (int i = 0; i < stringValue.length(); i++) {
+
+            if (Character.isDigit(stringValue.charAt(i))) {
+                result.append(stringValue.charAt(i));
+            }
+        }
+        return result.toString();
     }
 
     public static String formatPhoneNumber(final String rawPhone) {
