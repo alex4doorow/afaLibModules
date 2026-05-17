@@ -6,7 +6,7 @@ import lombok.Getter;
 @SuppressWarnings("PMD.ExcessivePublicCount")
 public enum DevicerErrors {
     UNKNOWN_ERROR("Неизвестная ошибка"),
-    UNKNOWN_ILLEGAL_ARGUMENT_ERROR("Ошибка привидения типов"),
+    UNKNOWN_ILLEGAL_ARGUMENT_ERROR("Ошибка привидения типов. {0} -> {1}"),
     UNKNOWN_VALIDATION_ERROR("Неизвестная ошибка валидации. {0}"),
     DB_FIELD_SORT_NOT_FOUND("Поле, указанное в сортировке <{0}> не существует"),
     DB_FIELD_ASC_DESC_SORT_NOT_FOUND("Направление сортировки <{0}> не существует. Выбирайте два варианта: asc|desc"),
@@ -53,6 +53,11 @@ public enum DevicerErrors {
     INTEGRATION_CDEK_CITIES_ERRORS("Ошибка получения городов из сервиса СДЕК: {0}"),
     INTEGRATION_CDEK_DELIVERY_POINTS_ERRORS("Ошибка получения пунктов выдачи из сервиса СДЕК: {0}"),
     INTEGRATION_CDEK_CALC_TARIFF_ERRORS("Ошибка расчета тарифа из сервиса СДЕК: {0}"),
+
+    // postCalc
+    INTEGRATION_POST_CALC_TARIFF_ERRORS("Ошибка расчета тарифа из сервиса PostCalc"),
+    INTEGRATION_POST_CALC_TO_INDEX_ERROR("Индекс получателя введен неверно - сервис PostCalc"),
+    INTEGRATION_POST_CALC_TEST_KEY_LIMIT_50_ERROR("Достигнут предел запросов для тестового ключа: 50 в сутки с одного адреса IP"),
 
     // sititek
     INTEGRATION_SUPPLIER_SITITEK_FEED_DOWNLOAD_ERRORS("Ошибка загрузки фида из файла СИТИТЕК pricer.xls: {0}"),
