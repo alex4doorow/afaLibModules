@@ -1,8 +1,7 @@
 package com.afa.core.utils;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.Month;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
 
 @SuppressWarnings("PMD.TooManyMethods")
@@ -16,6 +15,16 @@ public final class DateHelper {
     public static final String DATE_FORMAT_yyyy_MM_dd = "yyyy-MM-dd";
 
     private DateHelper() {
+    }
+
+    public static String defaultFormatDateTimeByTimeZone(final String timeZoneId) {
+        return OffsetDateTime.now(ZoneId.of(timeZoneId))
+                .format(DateTimeFormatter.ofPattern(DATA_FORMAT_UTC_Z));
+    }
+
+    public static String defaultFormatTimeByTimeZone(final String timeZoneId) {
+        return OffsetDateTime.now(ZoneId.of(timeZoneId))
+                .format(DateTimeFormatter.ofPattern(DATE_FORMAT_HH_mm));
     }
 
     // ===== МЕСЯЦ =====

@@ -32,7 +32,7 @@ public class AddressDto {
     private String city;
 
     @Schema(description = "delivery point code")
-    private String deliperyPointCode;
+    private String deliveryPointCode;
 
     @Schema(description = "post code")
     private String postCode;

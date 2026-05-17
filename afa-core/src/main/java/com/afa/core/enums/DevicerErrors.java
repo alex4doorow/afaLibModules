@@ -57,6 +57,12 @@ public enum DevicerErrors {
     // sititek
     INTEGRATION_SUPPLIER_SITITEK_FEED_DOWNLOAD_ERRORS("Ошибка загрузки фида из файла СИТИТЕК pricer.xls: {0}"),
 
+    // geonames
+    INTEGRATION_GEONAMES_CONNECTION_ERRORS("Ошибка подключения к сервису api.geonames.org"),
+
+    // yandex
+    INTEGRATION_YANDEX_GEOCODE_MAPS_CONNECTION_ERRORS("Ошибка подключения к сервису geocode-maps.yandex.ru"),
+
     // s3
     S3_ERROR("Сервис S3, {0}, ошибка {1}")
     ;
