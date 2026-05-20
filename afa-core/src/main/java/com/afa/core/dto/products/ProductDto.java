@@ -47,7 +47,7 @@ public class ProductDto {
     private WeightClasses weightClass;
 
     @Schema(name = "stock")
-    private StockSupplierProductDto stock;
+    private ProductSupplierPriceDto stock;
 
     private Integer sortKey;
 
@@ -79,7 +79,6 @@ public class ProductDto {
     }
 
     public String getViewStockQuantityText() {
-
 
         final String supplierAnnotation;
         if (this.getCompositeStockQuantity() >= 1) {

@@ -23,7 +23,7 @@ public class OrderItemDto {
     private Long id;
 
     @Schema(description = "item num")
-    private Long itemNum;
+    private Integer itemNum;
 
     @Schema(description = "product")
     private ProductDto product;

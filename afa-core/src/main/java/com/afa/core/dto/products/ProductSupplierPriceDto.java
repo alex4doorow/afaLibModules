@@ -8,7 +8,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class StockSupplierProductDto {
+public class ProductSupplierPriceDto {
 
     @Schema(name = "id")
     private Long id;

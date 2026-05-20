@@ -3,6 +3,8 @@ package com.afa.core.enums;
 import lombok.Getter;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
 
 @Getter
 public enum DeliveryPriceTypes {
@@ -30,4 +32,13 @@ public enum DeliveryPriceTypes {
         return name();
     }
 
+    public static List<DeliveryPriceTypes> findAllByDeliveryType(final DeliveryTypes deliveryType) {
+
+        if (deliveryType == null) {
+            return List.of();
+        }
+        return Arrays.stream(values())
+                .filter(value -> value.getDeliveryType() == deliveryType)
+                .toList();
+    }
 }

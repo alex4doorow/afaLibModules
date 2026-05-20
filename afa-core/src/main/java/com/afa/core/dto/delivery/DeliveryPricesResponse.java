@@ -1,4 +1,4 @@
-package com.afa.core.dto.products;
+package com.afa.core.dto.delivery;
 
 import com.afa.core.dto.BaseResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -10,14 +10,14 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
+@Schema(description = "order")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ProductResponse extends BaseResponse {
+public class DeliveryPricesResponse extends BaseResponse {
 
-    @Schema(description = "list with all data")
-    private final List<ProductDto> items;
+    private final List<DeliveryPriceDto> prices;
 
-    public ProductResponse(final List<ProductDto> items) {
+    public DeliveryPricesResponse(final List<DeliveryPriceDto> prices) {
         super();
-        this.items = items;
+        this.prices = prices;
     }
 }

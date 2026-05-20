@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -50,6 +51,19 @@ public class DeliveryCalcParcelDto {
     private String errorText;
 
     private Set<AddressDto> addresses;
+
+    public String getInfo() {
+        String result;
+        if (StringUtils.isEmpty(errorText)) {
+            result = "доставляем: " + this.to + ", " + "срок: " + this.termText + ", " + "вес: " + this.weightText;
+            if (StringUtils.isNoneEmpty(this.localTimeText)) {
+                result += " сейчас в месте назначения: " + this.localTimeText;
+            }
+        } else {
+            result = errorText;
+        }
+        return result;
+    }
 
     public static DeliveryCalcParcelDto createEmpty() {
         return new DeliveryCalcParcelDto();

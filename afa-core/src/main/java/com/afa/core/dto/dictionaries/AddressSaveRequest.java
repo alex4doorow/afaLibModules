@@ -36,7 +36,7 @@ public class AddressSaveRequest {
     private String city;
 
     @Schema(description = "delivery point code")
-    private String deliperyPointCode;
+    private String deliveryPointCode;
 
     @Size(min = 6, max = 6)
     @Schema(description = "post code")
