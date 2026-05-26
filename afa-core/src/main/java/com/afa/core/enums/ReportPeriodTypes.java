@@ -1,6 +1,7 @@
 package com.afa.core.enums;
 
 import com.afa.core.utils.DateHelper;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.data.util.Pair;
@@ -36,6 +37,14 @@ public enum ReportPeriodTypes {
         return name();
     }
 
+    public String getCaption() {
+        if (annotation == null || annotation.isBlank()) {
+            return annotation;
+        }
+
+        return annotation.substring(0, 1).toUpperCase() + annotation.substring(1).toLowerCase();
+    }
+
     public static ReportPeriodTypes[] getListOrderValues() {
         final Set<ReportPeriodTypes> result = new HashSet<>();
 
@@ -52,6 +61,7 @@ public enum ReportPeriodTypes {
         return result.toArray(new ReportPeriodTypes[0]);
     }
 
+    @JsonIgnore
     public static ReportPeriodTypes[] getReportValues() {
         final Set<ReportPeriodTypes> result = new HashSet<>();
 
@@ -62,6 +72,7 @@ public enum ReportPeriodTypes {
         return result.toArray(new ReportPeriodTypes[0]);
     }
 
+    @JsonIgnore
     public static Pair<LocalDate, LocalDate> findPeriodByType(final ReportPeriodTypes type) {
         final LocalDate today = LocalDate.now();
 
@@ -101,5 +112,10 @@ public enum ReportPeriodTypes {
             end = today;
         }
         return Pair.of(start, end);
+    }
+
+    @JsonIgnore
+    public Pair<LocalDate, LocalDate> findPeriodByType() {
+        return findPeriodByType(this);
     }
 }

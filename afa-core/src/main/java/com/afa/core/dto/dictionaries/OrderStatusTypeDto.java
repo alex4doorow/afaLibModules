@@ -24,4 +24,7 @@ public class OrderStatusTypeDto {
 
     @Schema(description = "annotation", example = "Заявка")
     private String annotation;
+
+    @Schema(description = "sort key")
+    private Integer sortKey;
 }

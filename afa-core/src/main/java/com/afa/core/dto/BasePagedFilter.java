@@ -5,7 +5,10 @@ import com.afa.core.exceptions.DevicerException;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -15,15 +18,19 @@ import java.util.List;
 import java.util.Locale;
 
 @Data
+@NoArgsConstructor
+@SuperBuilder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BasePagedFilter {
     private final static int MAX_RESULTS_ON_PAGE = 100;
     private final static String SORTED_ASC = "asc";
     private final static String SORTED_DESC = "desc";
 
+    @Builder.Default
     @Schema(description = "results on page", example = "10")
     private Integer resultsOnPage = 10;
 
+    @Builder.Default
     @Schema(description = "result's page number", example = "3")
     private Integer pageNumber = 1;
 
